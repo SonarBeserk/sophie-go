@@ -32,7 +32,7 @@ func openOrConfigureDatabase(databaseFile string) (*bolt.DB, error) {
 	return db, nil
 }
 
-func getEmoteSentUsage(emote string, userID string) (string, error) {
+func getEmoteSentUsage(emote string, userID string) (int, error) {
 	count := 0
 
 	err := db.View(func(tx *bolt.Tx) error {
@@ -52,11 +52,10 @@ func getEmoteSentUsage(emote string, userID string) (string, error) {
 		return nil
 	})
 
-	countStr := strconv.Itoa(count)
-	return countStr, err
+	return count, err
 }
 
-func getEmoteReceivedUsage(emote string, userID string) (string, error) {
+func getEmoteReceivedUsage(emote string, userID string) (int, error) {
 	count := 0
 
 	err := db.View(func(tx *bolt.Tx) error {
@@ -76,14 +75,14 @@ func getEmoteReceivedUsage(emote string, userID string) (string, error) {
 		return nil
 	})
 
-	countStr := strconv.Itoa(count)
-	return countStr, err
+	return count, err
 }
 
-func setEmoteSentUsage(emote string, userID string, count string) error {
+func setEmoteSentUsage(emote string, userID string, count int) error {
 	err := db.Update(func(tx *bolt.Tx) error {
 		key := strings.ToUpper(emote) + "|" + strings.ToUpper(userID) + "|Sent"
-		err := tx.Bucket([]byte(statsBucket)).Put([]byte(key), []byte(count))
+		countStr := strconv.Itoa(count)
+		err := tx.Bucket([]byte(statsBucket)).Put([]byte(key), []byte(countStr))
 		if err != nil {
 			return fmt.Errorf("could not insert weight: %v", err)
 		}
@@ -92,10 +91,11 @@ func setEmoteSentUsage(emote string, userID string, count string) error {
 	return err
 }
 
-func setEmoteReceivedUsage(emote string, userID string, count string) error {
+func setEmoteReceivedUsage(emote string, userID string, count int) error {
 	err := db.Update(func(tx *bolt.Tx) error {
 		key := strings.ToUpper(emote) + "|" + strings.ToUpper(userID) + "|Received"
-		err := tx.Bucket([]byte(statsBucket)).Put([]byte(key), []byte(count))
+		countStr := strconv.Itoa(count)
+		err := tx.Bucket([]byte(statsBucket)).Put([]byte(key), []byte(countStr))
 		if err != nil {
 			return fmt.Errorf("could not insert weight: %v", err)
 		}
@@ -104,25 +104,25 @@ func setEmoteReceivedUsage(emote string, userID string, count string) error {
 	return err
 }
 
-func getEmoteCountsForUser(emote string, userID string) (sent string, received string, err error) {
+func getEmoteCountsForUser(emote string, userID string) (sent int, received int, err error) {
 	sentCount, err := getEmoteSentUsage(smugKey, userID)
 	if err != nil {
-		return "", "", err
+		return 0, 0, err
 	}
 
 	err = setEmoteSentUsage(smugKey, userID, sentCount)
 	if err != nil {
-		return "", "", err
+		return 0, 0, err
 	}
 
 	receivedCount, err := getEmoteReceivedUsage(smugKey, userID)
 	if err != nil {
-		return "", "", err
+		return 0, 0, err
 	}
 
 	err = setEmoteSentUsage(smugKey, userID, receivedCount)
 	if err != nil {
-		return "", "", err
+		return 0, 0, err
 	}
 
 	return sentCount, receivedCount, nil

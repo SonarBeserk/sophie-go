@@ -56,10 +56,12 @@ func main() {
 		return
 	}
 
-	db, err := openOrConfigureDatabase(databaseFile)
+	database, err := openOrConfigureDatabase(databaseFile)
 	if err != nil {
 		fmt.Printf("error loading database file %s: %v", databaseFile, err)
 	}
+
+	db = database
 	defer db.Close()
 
 	// Create a new Discord session using the provided bot token.

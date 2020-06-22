@@ -1,6 +1,8 @@
 package main
 
 import (
+	"strconv"
+
 	"github.com/bwmarrin/discordgo"
 )
 
@@ -35,18 +37,38 @@ func createSmugEmbed(sender *discordgo.Member, receiver *discordgo.Member, image
 			return nil, err
 		}
 
+		err = setEmoteSentUsage(smugKey, sender.User.ID, sentCount+1)
+		if err != nil {
+			return nil, err
+		}
+
 		message = "**" + senderName + "**" + " is feeling " + "**Smug**"
-		stats = senderName + " has been smug " + sentCount + " times and has been treated smugly " + receivedCount + " times"
+		stats = senderName + " has been smug " + strconv.Itoa(sentCount) + " times and has been treated smugly " + strconv.Itoa(receivedCount) + " times"
 	}
 
 	if sender != nil && receiver != nil {
-		sentCount, receivedCount, err := getEmoteCountsForUser(smugKey, receiver.User.ID)
+		sentCount, err := getEmoteSentUsage(smugKey, sender.User.ID)
+		if err != nil {
+			return nil, err
+		}
+
+		err = setEmoteSentUsage(smugKey, sender.User.ID, sentCount+1)
+		if err != nil {
+			return nil, err
+		}
+
+		receivedCount, err := getEmoteReceivedUsage(smugKey, receiver.User.ID)
+		if err != nil {
+			return nil, err
+		}
+
+		err = setEmoteReceivedUsage(smugKey, receiver.User.ID, receivedCount+1)
 		if err != nil {
 			return nil, err
 		}
 
 		message = "**" + senderName + "**" + " is feeling " + "**Smug** towards **" + receiverName + "**"
-		stats = receiverName + " has been smug " + sentCount + " times and has been treated smugly " + receivedCount + " times"
+		stats = receiverName + " has been smug " + strconv.Itoa(sentCount) + " times and has been treated smugly " + strconv.Itoa(receivedCount) + " times"
 	}
 
 	embed := NewEmbed().
