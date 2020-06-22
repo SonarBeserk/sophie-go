@@ -102,15 +102,13 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 		return
 	}
 
-	channel, err := s.State.Channel(m.ChannelID)
+	isPrivate, err := isPrivateChat(s, m.ChannelID)
 	if err != nil {
-		if channel, err = s.Channel(m.ChannelID); err != nil {
-			fmt.Printf("Error occurred getting channel %s %v", m.ChannelID, err)
-			return
-		}
+		fmt.Printf("Error occurred verifying channel type %s %v", m.ChannelID, err)
 	}
 
-	if channel.Type != discordgo.ChannelTypeGuildText {
+	if isPrivate {
+		fmt.Println("Ignoring private chat")
 		return
 	}
 
@@ -156,6 +154,18 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 		fmt.Printf("Error occurred sending embed %v", err)
 		return
 	}
+}
+
+func isPrivateChat(s *discordgo.Session, channelID string) (bool, error) {
+	channel, err := s.State.Channel(channelID)
+	if err != nil {
+		if channel, err = s.Channel(channelID); err != nil {
+			fmt.Printf("Error occurred getting channel %s %v", channelID, err)
+			return true, err
+		}
+	}
+
+	return channel.Type != discordgo.ChannelTypeGuildText, nil
 }
 
 func getUserName(s *discordgo.Session, guildID string, userID string) (string, error) {
