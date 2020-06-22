@@ -13,6 +13,7 @@ import (
 
 	"github.com/BurntSushi/toml"
 	"github.com/bwmarrin/discordgo"
+	bolt "go.etcd.io/bbolt"
 )
 
 // Config represents the configuration for the bot
@@ -30,6 +31,10 @@ type Emote struct {
 var (
 	Token        string
 	emotesFile   string
+	databaseFile string
+
+	db *bolt.DB
+
 	userNames map[string]string    = map[string]string{}
 	emotes    map[string]EmbedFunc = map[string]EmbedFunc{
 		"smug": createSmugEmbed,
@@ -40,6 +45,7 @@ var (
 func init() {
 	flag.StringVar(&Token, "t", "", "Bot Token")
 	flag.StringVar(&emotesFile, "emotes", "./emotes.toml", "Path to file containing emotes")
+	flag.StringVar(&databaseFile, "db", "./data.db", "Path to database")
 	flag.Parse()
 }
 
@@ -49,6 +55,12 @@ func main() {
 		fmt.Printf("error loading emotes file %s: %v", emotesFile, err)
 		return
 	}
+
+	db, err := openOrConfigureDatabase(databaseFile)
+	if err != nil {
+		fmt.Printf("error loading database file %s: %v", databaseFile, err)
+	}
+	defer db.Close()
 
 	// Create a new Discord session using the provided bot token.
 	dg, err := discordgo.New("Bot " + Token)
@@ -167,7 +179,11 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 	r := rand.Intn(len(emoteImages[emote]))
 
 	image := emoteImages["smug"][r]
-	embed := embedFunc(senderUsr, receiverUsr, image, message)
+	embed, err := embedFunc(senderUsr, receiverUsr, image, message)
+	if err != nil {
+		fmt.Printf("Error occurred creating embed %v", err)
+		return
+	}
 
 	_, err = s.ChannelMessageSendEmbed(m.ChannelID, embed)
 	if err != nil {
