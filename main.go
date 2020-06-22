@@ -17,13 +17,13 @@ import (
 
 // Config represents the configuration for the bot
 type Config struct {
-	Emotes []Emote
+	Emotes []Emote `toml:"emote"`
 }
 
 // Emote represents a emote that has an image
 type Emote struct {
-	Emote string
-	URL   string
+	Verb string
+	URL  string
 }
 
 // Variables used for command line parameters
@@ -83,11 +83,11 @@ func loadEmoteMaps() error {
 
 	var conf Config
 	if _, err := toml.Decode(string(data), &conf); err != nil {
-		// handle error
+		return err
 	}
 
 	for _, emote := range conf.Emotes {
-		emoteImages[emote.Emote] = append(emoteImages[emote.Emote], emote.URL)
+		emoteImages[emote.Verb] = append(emoteImages[emote.Verb], emote.URL)
 	}
 
 	return nil
