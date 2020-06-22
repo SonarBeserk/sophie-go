@@ -28,7 +28,8 @@ type Emote struct {
 
 // Variables used for command line parameters
 var (
-	Token     string
+	Token        string
+	emotesFile   string
 	userNames map[string]string    = map[string]string{}
 	emotes    map[string]EmbedFunc = map[string]EmbedFunc{
 		"smug": createSmugEmbed,
@@ -38,13 +39,14 @@ var (
 
 func init() {
 	flag.StringVar(&Token, "t", "", "Bot Token")
+	flag.StringVar(&emotesFile, "emotes", "./emotes.toml", "Path to file containing emotes")
 	flag.Parse()
 }
 
 func main() {
-	err := loadEmoteMaps()
+	err := loadEmoteMaps(emotesFile)
 	if err != nil {
-		fmt.Println("error loading emotes file,", err)
+		fmt.Printf("error loading emotes file $s: $v", err)
 		return
 	}
 
@@ -75,8 +77,8 @@ func main() {
 	dg.Close()
 }
 
-func loadEmoteMaps() error {
-	data, err := ioutil.ReadFile("./emotes.toml")
+func loadEmoteMaps(path string) error {
+	data, err := ioutil.ReadFile(path)
 	if err != nil {
 		return err
 	}
