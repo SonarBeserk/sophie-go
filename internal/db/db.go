@@ -5,6 +5,7 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/pkg/errors"
 	bolt "go.etcd.io/bbolt"
 )
 
@@ -19,18 +20,18 @@ type Database struct {
 func OpenOrConfigureDatabase(databaseFile string) (*Database, error) {
 	db, err := bolt.Open(databaseFile, 0666, nil)
 	if err != nil {
-		fmt.Printf("error loading database file %s: %v", databaseFile, err)
+		return nil, errors.Wrapf(err, "error loading database file %s: %v", databaseFile)
 	}
 
 	err = db.Update(func(tx *bolt.Tx) error {
 		_, err := tx.CreateBucketIfNotExists([]byte(statsBucket))
 		if err != nil {
-			return fmt.Errorf("could not create root bucket: %v", err)
+			return errors.Wrapf(err, "could not create root bucket: %v")
 		}
 		return nil
 	})
 	if err != nil {
-		return nil, fmt.Errorf("could not set up buckets, %v", err)
+		return nil, errors.Wrapf(err, "could not set up buckets, %v")
 	}
 
 	return &Database{

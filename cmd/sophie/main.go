@@ -58,13 +58,13 @@ func init() {
 func main() {
 	err := loadEmoteMaps(emotesFile)
 	if err != nil {
-		fmt.Printf("error loading emotes file %s: %v", emotesFile, err)
+		fmt.Printf("error loading emotes file %s: %v\n", emotesFile, err)
 		return
 	}
 
 	db, err := db.OpenOrConfigureDatabase(databaseFile)
 	if err != nil {
-		fmt.Printf("error loading database file %s: %v", databaseFile, err)
+		fmt.Printf("error loading database file %s: %v\n", databaseFile, err)
 	}
 
 	database = db
@@ -73,7 +73,7 @@ func main() {
 	// Create a new Discord session using the provided bot token.
 	dg, err := discordgo.New("Bot " + Token)
 	if err != nil {
-		fmt.Printf("error creating Discord session: %v", err)
+		fmt.Printf("error creating Discord session: %v\n", err)
 		return
 	}
 
@@ -83,7 +83,7 @@ func main() {
 	// Open a websocket connection to Discord and begin listening.
 	err = dg.Open()
 	if err != nil {
-		fmt.Printf("error opening connection: %v", err)
+		fmt.Printf("error opening connection: %v\n", err)
 		return
 	}
 
@@ -126,7 +126,7 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 
 	isPrivate, err := helpers.IsPrivateChat(s, m.ChannelID)
 	if err != nil {
-		fmt.Printf("Error occurred verifying channel type %s %v", m.ChannelID, err)
+		fmt.Printf("Error occurred verifying channel type %s %v\n", m.ChannelID, err)
 	}
 
 	if isPrivate {
@@ -136,7 +136,7 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 
 	userName, err := helpers.GetUserName(s, m.GuildID, s.State.User.ID)
 	if err != nil {
-		fmt.Printf("Error occurred determining guild username %s %v", m.GuildID, err)
+		fmt.Printf("Error occurred determining guild username %s %v\n", m.GuildID, err)
 	}
 
 	if !strings.HasPrefix(m.Content, userName) {
@@ -151,7 +151,7 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 
 	senderUsr, err := s.GuildMember(m.GuildID, m.Author.ID)
 	if err != nil {
-		fmt.Printf("Error occurred getting username %s %v", m.Author.ID, err)
+		fmt.Printf("Error occurred getting username %s %v\n", m.Author.ID, err)
 		return
 	}
 
@@ -163,7 +163,7 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 		userName := msgParts[2]
 		usr, err := helpers.GetUserByName(s, m.GuildID, userName)
 		if err != nil {
-			fmt.Printf("Error occurred getting username %s %v", userName, err)
+			fmt.Printf("Error occurred getting username %s %v\n", userName, err)
 			return
 		}
 
@@ -193,13 +193,13 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 
 	embed, err := embedFunc(ctx, senderUsr, receiverUsr, image, message)
 	if err != nil {
-		fmt.Printf("Error occurred creating embed %v", err)
+		fmt.Printf("Error occurred creating embed %v\n", err)
 		return
 	}
 
 	_, err = s.ChannelMessageSendEmbed(m.ChannelID, embed)
 	if err != nil {
-		fmt.Printf("Error occurred sending embed %v", err)
+		fmt.Printf("Error occurred sending embed %v\n", err)
 		return
 	}
 }

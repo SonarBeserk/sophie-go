@@ -1,9 +1,8 @@
 package helpers
 
 import (
-	"fmt"
-
 	"github.com/bwmarrin/discordgo"
+	"github.com/pkg/errors"
 )
 
 var (
@@ -14,8 +13,7 @@ func IsPrivateChat(s *discordgo.Session, channelID string) (bool, error) {
 	channel, err := s.State.Channel(channelID)
 	if err != nil {
 		if channel, err = s.Channel(channelID); err != nil {
-			fmt.Printf("Error occurred getting channel %s %v", channelID, err)
-			return true, err
+			return true, errors.Wrapf(err, "Error occurred getting channel %s %v", channelID, err)
 		}
 	}
 
@@ -29,8 +27,7 @@ func GetUserName(s *discordgo.Session, guildID string, userID string) (string, e
 	if !ok {
 		usr, err := s.GuildMember(guildID, userID)
 		if err != nil {
-			fmt.Printf("Error occurred getting username %s %v", userID, err)
-			return "", err
+			return "", errors.Wrapf(err, "Error occurred getting username %s %v", userID, err)
 		}
 
 		if usr.Nick != "" {
