@@ -5,19 +5,41 @@ import (
 )
 
 // EmbedFunc represents a method used to create message embeds
-type EmbedFunc func(m *discordgo.Member, image string) *discordgo.MessageEmbed
+type EmbedFunc func(sender *discordgo.Member, receiver *discordgo.Member, image string) *discordgo.MessageEmbed
 
-func createSmugEmbed(m *discordgo.Member, image string) *discordgo.MessageEmbed {
-	name := m.User.Username
+func createSmugEmbed(sender *discordgo.Member, receiver *discordgo.Member, image string) *discordgo.MessageEmbed {
+	senderName := sender.User.Username
 
-	if m.Nick != "" {
-		name = m.Nick
+	if sender.Nick != "" {
+		senderName = sender.Nick
+	}
+
+	receiverName := ""
+	if receiver != nil {
+		if receiver.Nick != "" {
+			receiverName = receiver.Nick
+		} else {
+			receiverName = receiver.User.Username
+		}
+	}
+
+	message := ""
+	stats := ""
+
+	if sender != nil && receiver == nil {
+		message = "**" + senderName + "**" + " is feeling " + "**Smug**"
+		stats = senderName + " has been smug " + "X times"
+	}
+
+	if sender != nil && receiver != nil {
+		message = "**" + senderName + "**" + " is feeling " + "**Smug** towards **" + receiverName + "**"
+		stats = senderName + " has been smug " + "X times and has been treated smugly " + "X times"
 	}
 
 	embed := NewEmbed().
-		SetDescription("**" + name + "**" + " is feeling " + "**Smug**").
+		SetDescription(message).
 		SetImage(image).
-		SetFooter(name + " has been smug " + "X times").
+		SetFooter(stats).
 		SetColor(0x00ff00).MessageEmbed
 
 	return embed

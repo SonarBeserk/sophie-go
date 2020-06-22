@@ -127,10 +127,23 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 		return
 	}
 
-	usr, err := s.GuildMember(m.GuildID, m.Author.ID)
+	senderUsr, err := s.GuildMember(m.GuildID, m.Author.ID)
 	if err != nil {
 		fmt.Printf("Error occurred getting username %s %v", m.Author.ID, err)
 		return
+	}
+
+	var receiverUsr *discordgo.Member
+
+	if len(msgParts) > 2 {
+		userName := msgParts[2]
+		usr, err := getUserByName(s, m.GuildID, userName)
+		if err != nil {
+			fmt.Printf("Error occurred getting username %s %v", userName, err)
+			return
+		}
+
+		receiverUsr = usr
 	}
 
 	emote := strings.ToLower(msgParts[1])
@@ -146,7 +159,7 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 	r := rand.Intn(len(emoteImages[emote]))
 
 	image := emoteImages["smug"][r]
-	embed := embedFunc(usr, image)
+	embed := embedFunc(senderUsr, receiverUsr, image)
 
 	_, err = s.ChannelMessageSendEmbed(m.ChannelID, embed)
 	if err != nil {
@@ -188,4 +201,19 @@ func getUserName(s *discordgo.Session, guildID string, userID string) (string, e
 	}
 
 	return name, nil
+}
+
+func getUserByName(s *discordgo.Session, GuildID string, userName string) (*discordgo.Member, error) {
+	members, err := s.GuildMembers(GuildID, "", 1000)
+	if err != nil {
+		return nil, err
+	}
+
+	for _, member := range members {
+		if member.Nick == userName || member.User.Username == userName {
+			return member, nil
+		}
+	}
+
+	return nil, nil
 }
