@@ -5,9 +5,9 @@ import (
 )
 
 // EmbedFunc represents a method used to create message embeds
-type EmbedFunc func(sender *discordgo.Member, receiver *discordgo.Member, image string) *discordgo.MessageEmbed
+type EmbedFunc func(sender *discordgo.Member, receiver *discordgo.Member, image string, message string) *discordgo.MessageEmbed
 
-func createSmugEmbed(sender *discordgo.Member, receiver *discordgo.Member, image string) *discordgo.MessageEmbed {
+func createSmugEmbed(sender *discordgo.Member, receiver *discordgo.Member, image string, message string) *discordgo.MessageEmbed {
 	senderName := sender.User.Username
 
 	if sender.Nick != "" {
@@ -23,7 +23,6 @@ func createSmugEmbed(sender *discordgo.Member, receiver *discordgo.Member, image
 		}
 	}
 
-	message := ""
 	stats := ""
 
 	if sender != nil && receiver == nil {

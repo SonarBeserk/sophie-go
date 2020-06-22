@@ -46,7 +46,7 @@ func init() {
 func main() {
 	err := loadEmoteMaps(emotesFile)
 	if err != nil {
-		fmt.Printf("error loading emotes file $s: $v", err)
+		fmt.Printf("error loading emotes file %s: %v", emotesFile, err)
 		return
 	}
 
@@ -137,6 +137,8 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 
 	var receiverUsr *discordgo.Member
 
+	message := ""
+
 	if len(msgParts) > 2 {
 		userName := msgParts[2]
 		usr, err := getUserByName(s, m.GuildID, userName)
@@ -146,6 +148,10 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 		}
 
 		receiverUsr = usr
+	}
+
+	if len(msgParts) > 3 {
+		message = strings.Join(msgParts[3:], " ")
 	}
 
 	emote := strings.ToLower(msgParts[1])
@@ -161,7 +167,7 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 	r := rand.Intn(len(emoteImages[emote]))
 
 	image := emoteImages["smug"][r]
-	embed := embedFunc(senderUsr, receiverUsr, image)
+	embed := embedFunc(senderUsr, receiverUsr, image, message)
 
 	_, err = s.ChannelMessageSendEmbed(m.ChannelID, embed)
 	if err != nil {
