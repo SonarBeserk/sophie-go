@@ -133,7 +133,7 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 		return
 	}
 
-	emote := msgParts[1]
+	emote := strings.ToLower(msgParts[1])
 	embedFunc := emotes[emote]
 
 	if embedFunc == nil {
