@@ -15,19 +15,15 @@ import (
 	"github.com/BurntSushi/toml"
 	"github.com/SonarBeserk/sophie-go/internal/db"
 	"github.com/SonarBeserk/sophie-go/internal/embed"
+	"github.com/SonarBeserk/sophie-go/internal/emote"
 	"github.com/SonarBeserk/sophie-go/internal/helpers"
 	"github.com/bwmarrin/discordgo"
 )
 
 // Config represents the configuration for the bot
 type Config struct {
-	Emotes []Emote `toml:"emote"`
-}
-
-// Emote represents a emote that has an image
-type Emote struct {
-	Verb string
-	URL  string
+	Emotes []emote.Emote `toml:"emote"`
+	Gifs   []emote.Gif   `toml:"gif"`
 }
 
 type contextKey string
@@ -40,10 +36,8 @@ var (
 
 	database *db.Database
 
-	emotes map[string]embed.Func = map[string]embed.Func{
-		"smug": embed.CreateSmugEmbed,
-	}
-	emoteImages map[string][]string = map[string][]string{}
+	emotes      map[string]emote.Emote = map[string]emote.Emote{}
+	emoteImages map[string][]string    = map[string][]string{}
 
 	databaseCtx contextKey = "db"
 )
@@ -109,7 +103,11 @@ func loadEmoteMaps(path string) error {
 	}
 
 	for _, emote := range conf.Emotes {
-		emoteImages[emote.Verb] = append(emoteImages[emote.Verb], emote.URL)
+		emotes[emote.Verb] = emote
+	}
+
+	for _, gif := range conf.Gifs {
+		emoteImages[gif.Verb] = append(emoteImages[gif.Verb], gif.URL)
 	}
 
 	return nil
@@ -175,11 +173,6 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 	}
 
 	emote := strings.ToLower(msgParts[1])
-	embedFunc := emotes[emote]
-
-	if embedFunc == nil {
-		return
-	}
 
 	// Add randomness
 	rand.Seed(time.Now().UnixNano())
@@ -187,11 +180,12 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 	r := rand.Intn(len(emoteImages[emote]))
 
 	image := emoteImages["smug"][r]
+	emoteEntry := emotes[emote]
 
 	c := context.Background()
 	ctx := context.WithValue(c, databaseCtx, database)
 
-	embed, err := embedFunc(ctx, senderUsr, receiverUsr, image, message)
+	embed, err := embed.CreateEmbed(ctx, emoteEntry, senderUsr, receiverUsr, image, message)
 	if err != nil {
 		fmt.Printf("Error occurred creating embed %v\n", err)
 		return
