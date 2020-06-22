@@ -114,25 +114,12 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 		return
 	}
 
-	val, ok := userNames[m.GuildID]
-
-	if !ok {
-		usr, err := s.GuildMember(m.GuildID, s.State.User.ID)
-		if err != nil {
-			fmt.Printf("Error occurred getting username %s %v", m.Author.ID, err)
-			return
-		}
-
-		if usr.Nick != "" {
-			userNames[m.GuildID] = usr.Nick
-		} else {
-			userNames[m.GuildID] = usr.User.Username
-		}
-
-		val = userNames[m.GuildID]
+	userName, err := getUserName(s, m.GuildID, s.State.User.ID)
+	if err != nil {
+		fmt.Printf("Error occurred determining guild username %s %v", m.GuildID, err)
 	}
 
-	if !strings.HasPrefix(m.Content, val) {
+	if !strings.HasPrefix(m.Content, userName) {
 		return
 	}
 
@@ -169,4 +156,27 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 		fmt.Printf("Error occurred sending embed %v", err)
 		return
 	}
+}
+
+func getUserName(s *discordgo.Session, guildID string, userID string) (string, error) {
+	key := guildID + "|" + userID
+	name, ok := userNames[key]
+
+	if !ok {
+		usr, err := s.GuildMember(guildID, userID)
+		if err != nil {
+			fmt.Printf("Error occurred getting username %s %v", userID, err)
+			return "", err
+		}
+
+		if usr.Nick != "" {
+			userNames[key] = usr.Nick
+		} else {
+			userNames[key] = usr.User.Username
+		}
+
+		name = userNames[key]
+	}
+
+	return name, nil
 }
