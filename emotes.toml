@@ -1,3 +1,91 @@
+# bite [user] (reason) - Bite someone in the server. *chomp*
+
+#blush (user) (reason) - Blush, you know, the cute anime girl thing
+
+# bonk [user] (reason) - Hit someone on the head
+
+# boop [user] (reason) - Boop someone on the nose
+
+# bored (user) (reason) - Express how bored you are in chat
+
+# chase [user] (reason) - Chase someone who is running away
+
+# cheer (user) (reason) - Cheer for someone, yay!
+
+# cringe (user) (reason) - Cringe at whatever stuff is happening in chat
+
+# cry (user) (reason) - Cry, because it's okey to do so. I do so at 3am too...
+
+# cuddle [user] (reason) - Give someone a big cuddle, they deserve it!
+
+# dab (user) (reason) - Dabs... someone suggested this... don't blame me
+
+# dance (user) (reason) - Dance around in chat
+
+# die (user) (reason) - Wish yourself or someone else death. Virtually though, hopefully
+
+# facepalm (user) (reason) - Facepalm. Because people are dumb in chat
+
+# feed [user] (reason) - Feed someone some food
+
+# glomp [user] (reason) - Nobody knows what this word means... It's jumping on someone for a hug. IT'S A REAL THING... hmph
+
+# handhold [user] (reason) - Hold someone's hand, I assume you two are married. right?
+
+# happy (user) (reason) - Express how happy you are
+
+# hate [user] (reason) - Express how unhappy you are with someone's existance
+
+# highfive [user] (reason) - Give someone a high five! Yeah!
+
+# hug [user] (reason) - Give someone a big hug, we all want a hug sometime
+
+# jojo - ORA ORA ORA ORA ORA MUDA MUDA MUDA MUDA MUDA
+
+# kill [user] (reason) - Unalive someone. Commit death on them. Only on Discord though (hopefully...)
+
+# kiss [user] (reason) - Kiss someone on the lips
+
+# laugh (user) (reason) - Laugh at whatever is going on
+
+# lick [user] (reason)
+
+# love [user] (reason)
+
+# lurk (user) (reason)
+
+# nervous (user) (reason)
+
+# no (user) (reason)
+
+# nom [user] (reason)
+
+# nuzzle [user] (reason)
+
+# panic [user] (reason)
+
+# pat [user] (reason)
+
+# peck [user] (reason)
+
+# poke [user] (reason)
+
+# pout (user) (reason)
+
+# run (user) (reason)
+
+# sad (user) (reason)
+
+# shoot [user] (reason)
+
+# shrug (user) (reason)
+
+# slap [user] (reason)
+
+# sleep (user) (reason)
+
+# smug (user) (reason)
+
 [[emote]]
 verb = "smug"
 url = "https://thumbs.gfycat.com/ShadowyAdeptAlleycat-small.gif"
@@ -5,3 +93,23 @@ url = "https://thumbs.gfycat.com/ShadowyAdeptAlleycat-small.gif"
 [[emote]]
 verb = "smug"
 url = "https://i.imgur.com/bVdCRD3.gif"
+
+# stab [user] (reason)
+
+# stare (user) (reason)
+
+# tease [user] (reason)
+
+# think [user] (reason)
+
+# thumbsup (user) (reason)
+
+# tickle (user) (reason)
+
+# triggered (user) (reason)
+
+# wag (user) (reason)
+
+#wave (user) (reason)
+
+#wink (user) (reason)
