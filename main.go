@@ -3,14 +3,26 @@ package main
 import (
 	"flag"
 	"fmt"
+	"io/ioutil"
 	"os"
 	"os/signal"
 	"strings"
 	"syscall"
 
+	"github.com/BurntSushi/toml"
 	"github.com/bwmarrin/discordgo"
 )
 
+// Config represents the configuration for the bot
+type Config struct {
+	Emotes []Emote
+}
+
+// Emote represents a emote that has an image
+type Emote struct {
+	Emote string
+	URL   string
+}
 
 // Variables used for command line parameters
 var (
@@ -19,9 +31,7 @@ var (
 	emotes    map[string]EmbedFunc = map[string]EmbedFunc{
 		"smug": createSmugEmbed,
 	}
-	emoteImages map[string][]string = map[string][]string{
-		"smug": {""},
-	}
+	emoteImages map[string][]string = map[string][]string{}
 )
 
 func init() {
@@ -30,6 +40,12 @@ func init() {
 }
 
 func main() {
+	err := loadEmoteMaps()
+	if err != nil {
+		fmt.Println("error loading emotes file,", err)
+		return
+	}
+
 	// Create a new Discord session using the provided bot token.
 	dg, err := discordgo.New("Bot " + Token)
 	if err != nil {
@@ -55,6 +71,24 @@ func main() {
 
 	// Cleanly close down the Discord session.
 	dg.Close()
+}
+
+func loadEmoteMaps() error {
+	data, err := ioutil.ReadFile("./emotes.toml")
+	if err != nil {
+		return err
+	}
+
+	var conf Config
+	if _, err := toml.Decode(string(data), &conf); err != nil {
+		// handle error
+	}
+
+	for _, emote := range conf.Emotes {
+		emoteImages[emote.Emote] = append(emoteImages[emote.Emote], emote.URL)
+	}
+
+	return nil
 }
 
 // This function will be called (due to AddHandler above) every time a new
