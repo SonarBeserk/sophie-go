@@ -1,11 +1,13 @@
 package main
 
-import "github.com/bwmarrin/discordgo"
+import (
+	"github.com/bwmarrin/discordgo"
+)
 
 // EmbedFunc represents a method used to create message embeds
-type EmbedFunc func(m *discordgo.Member) *discordgo.MessageEmbed
+type EmbedFunc func(m *discordgo.Member, image string) *discordgo.MessageEmbed
 
-func createSmugEmbed(m *discordgo.Member) *discordgo.MessageEmbed {
+func createSmugEmbed(m *discordgo.Member, image string) *discordgo.MessageEmbed {
 	name := m.User.Username
 
 	if m.Nick != "" {
@@ -13,9 +15,9 @@ func createSmugEmbed(m *discordgo.Member) *discordgo.MessageEmbed {
 	}
 
 	embed := NewEmbed().
-		SetDescription("**" + name + "**" + " is feeling " + "**" + emote + "**").
-		SetImage("").
-		SetFooter(name + " has been smug " + "20 times").
+		SetDescription("**" + name + "**" + " is feeling " + "**Smug**").
+		SetImage(image).
+		SetFooter(name + " has been smug " + "X times").
 		SetColor(0x00ff00).MessageEmbed
 
 	return embed

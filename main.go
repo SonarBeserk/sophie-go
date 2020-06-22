@@ -4,10 +4,12 @@ import (
 	"flag"
 	"fmt"
 	"io/ioutil"
+	"math/rand"
 	"os"
 	"os/signal"
 	"strings"
 	"syscall"
+	"time"
 
 	"github.com/BurntSushi/toml"
 	"github.com/bwmarrin/discordgo"
@@ -146,13 +148,21 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 		return
 	}
 
-	embedFunc := emotes[msgParts[1]]
+	emote := msgParts[1]
+	embedFunc := emotes[emote]
 
 	if embedFunc == nil {
 		return
 	}
 
-	embed := embedFunc(usr)
+	// Add randomness
+	rand.Seed(time.Now().UnixNano())
+
+	r := rand.Intn(len(emoteImages[emote]) + 1)
+	fmt.Println(r)
+
+	image := emoteImages["smug"][r]
+	embed := embedFunc(usr, image)
 
 	_, err = s.ChannelMessageSendEmbed(m.ChannelID, embed)
 	if err != nil {
