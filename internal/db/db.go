@@ -20,18 +20,18 @@ type Database struct {
 func OpenOrConfigureDatabase(databaseFile string) (*Database, error) {
 	db, err := bolt.Open(databaseFile, 0666, nil)
 	if err != nil {
-		return nil, errors.Wrapf(err, "error loading database file %s: %v", databaseFile)
+		return nil, errors.Wrapf(err, "Error loading database file %s: %v", databaseFile)
 	}
 
 	err = db.Update(func(tx *bolt.Tx) error {
 		_, err := tx.CreateBucketIfNotExists([]byte(statsBucket))
 		if err != nil {
-			return errors.Wrapf(err, "could not create root bucket: %v")
+			return errors.Wrapf(err, "Could not create root bucket: %v")
 		}
 		return nil
 	})
 	if err != nil {
-		return nil, errors.Wrapf(err, "could not set up buckets, %v")
+		return nil, errors.Wrapf(err, "Could not set up buckets, %v")
 	}
 
 	return &Database{
@@ -91,7 +91,7 @@ func (d Database) SetEmoteSentUsage(emote string, userID string, count int) erro
 		countStr := strconv.Itoa(count)
 		err := tx.Bucket([]byte(statsBucket)).Put([]byte(key), []byte(countStr))
 		if err != nil {
-			return fmt.Errorf("could not insert weight: %v", err)
+			return fmt.Errorf("Could not insert sent stat: %v", err)
 		}
 		return nil
 	})
@@ -104,7 +104,7 @@ func (d Database) SetEmoteReceivedUsage(emote string, userID string, count int) 
 		countStr := strconv.Itoa(count)
 		err := tx.Bucket([]byte(statsBucket)).Put([]byte(key), []byte(countStr))
 		if err != nil {
-			return fmt.Errorf("could not insert weight: %v", err)
+			return fmt.Errorf("Could not insert received stat: %v", err)
 		}
 		return nil
 	})

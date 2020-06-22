@@ -52,13 +52,13 @@ func init() {
 func main() {
 	err := loadEmoteMaps(emotesFile)
 	if err != nil {
-		fmt.Printf("error loading emotes file %s: %v\n", emotesFile, err)
+		fmt.Printf("Error loading emotes file %s: %v\n", emotesFile, err)
 		return
 	}
 
 	db, err := db.OpenOrConfigureDatabase(databaseFile)
 	if err != nil {
-		fmt.Printf("error loading database file %s: %v\n", databaseFile, err)
+		fmt.Printf("Error loading database file %s: %v\n", databaseFile, err)
 	}
 
 	database = db
@@ -67,7 +67,7 @@ func main() {
 	// Create a new Discord session using the provided bot token.
 	dg, err := discordgo.New("Bot " + Token)
 	if err != nil {
-		fmt.Printf("error creating Discord session: %v\n", err)
+		fmt.Printf("Error creating Discord session: %v\n", err)
 		return
 	}
 
@@ -77,7 +77,7 @@ func main() {
 	// Open a websocket connection to Discord and begin listening.
 	err = dg.Open()
 	if err != nil {
-		fmt.Printf("error opening connection: %v\n", err)
+		fmt.Printf("Error opening connection: %v\n", err)
 		return
 	}
 
@@ -187,13 +187,13 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 
 	embed, err := embed.CreateEmbed(ctx, emoteEntry, senderUsr, receiverUsr, image, message)
 	if err != nil {
-		fmt.Printf("Error occurred creating embed %v\n", err)
+		fmt.Printf("Error occurred creating embed: %v\n", err)
 		return
 	}
 
 	_, err = s.ChannelMessageSendEmbed(m.ChannelID, embed)
 	if err != nil {
-		fmt.Printf("Error occurred sending embed %v\n", err)
+		fmt.Printf("Error occurred sending embed: %v\n", err)
 		return
 	}
 }
