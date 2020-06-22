@@ -1,4 +1,4 @@
-package main
+package db
 
 import (
 	"fmt"
@@ -12,7 +12,11 @@ var (
 	statsBucket string = "STATS"
 )
 
-func openOrConfigureDatabase(databaseFile string) (*bolt.DB, error) {
+type Database struct {
+	*bolt.DB
+}
+
+func OpenOrConfigureDatabase(databaseFile string) (*Database, error) {
 	db, err := bolt.Open(databaseFile, 0666, nil)
 	if err != nil {
 		fmt.Printf("error loading database file %s: %v", databaseFile, err)
@@ -29,13 +33,15 @@ func openOrConfigureDatabase(databaseFile string) (*bolt.DB, error) {
 		return nil, fmt.Errorf("could not set up buckets, %v", err)
 	}
 
-	return db, nil
+	return &Database{
+		DB: db,
+	}, nil
 }
 
-func getEmoteSentUsage(emote string, userID string) (int, error) {
+func (d Database) GetEmoteSentUsage(emote string, userID string) (int, error) {
 	count := 0
 
-	err := db.View(func(tx *bolt.Tx) error {
+	err := d.View(func(tx *bolt.Tx) error {
 		key := strings.ToUpper(emote) + "|" + strings.ToUpper(userID) + "|Sent"
 
 		curCountVal := tx.Bucket([]byte(statsBucket)).Get([]byte(key))
@@ -55,10 +61,10 @@ func getEmoteSentUsage(emote string, userID string) (int, error) {
 	return count, err
 }
 
-func getEmoteReceivedUsage(emote string, userID string) (int, error) {
+func (d Database) GetEmoteReceivedUsage(emote string, userID string) (int, error) {
 	count := 0
 
-	err := db.View(func(tx *bolt.Tx) error {
+	err := d.View(func(tx *bolt.Tx) error {
 		key := strings.ToUpper(emote) + "|" + strings.ToUpper(userID) + "|Received"
 
 		curCountVal := tx.Bucket([]byte(statsBucket)).Get([]byte(key))
@@ -78,8 +84,8 @@ func getEmoteReceivedUsage(emote string, userID string) (int, error) {
 	return count, err
 }
 
-func setEmoteSentUsage(emote string, userID string, count int) error {
-	err := db.Update(func(tx *bolt.Tx) error {
+func (d Database) SetEmoteSentUsage(emote string, userID string, count int) error {
+	err := d.Update(func(tx *bolt.Tx) error {
 		key := strings.ToUpper(emote) + "|" + strings.ToUpper(userID) + "|Sent"
 		countStr := strconv.Itoa(count)
 		err := tx.Bucket([]byte(statsBucket)).Put([]byte(key), []byte(countStr))
@@ -91,8 +97,8 @@ func setEmoteSentUsage(emote string, userID string, count int) error {
 	return err
 }
 
-func setEmoteReceivedUsage(emote string, userID string, count int) error {
-	err := db.Update(func(tx *bolt.Tx) error {
+func (d Database) SetEmoteReceivedUsage(emote string, userID string, count int) error {
+	err := d.Update(func(tx *bolt.Tx) error {
 		key := strings.ToUpper(emote) + "|" + strings.ToUpper(userID) + "|Received"
 		countStr := strconv.Itoa(count)
 		err := tx.Bucket([]byte(statsBucket)).Put([]byte(key), []byte(countStr))
@@ -104,23 +110,23 @@ func setEmoteReceivedUsage(emote string, userID string, count int) error {
 	return err
 }
 
-func getEmoteCountsForUser(emote string, userID string) (sent int, received int, err error) {
-	sentCount, err := getEmoteSentUsage(smugKey, userID)
+func (d Database) GetEmoteCountsForUser(emote string, userID string) (sent int, received int, err error) {
+	sentCount, err := d.GetEmoteSentUsage(emote, userID)
 	if err != nil {
 		return 0, 0, err
 	}
 
-	err = setEmoteSentUsage(smugKey, userID, sentCount)
+	err = d.SetEmoteSentUsage(emote, userID, sentCount)
 	if err != nil {
 		return 0, 0, err
 	}
 
-	receivedCount, err := getEmoteReceivedUsage(smugKey, userID)
+	receivedCount, err := d.GetEmoteReceivedUsage(emote, userID)
 	if err != nil {
 		return 0, 0, err
 	}
 
-	err = setEmoteSentUsage(smugKey, userID, receivedCount)
+	err = d.SetEmoteSentUsage(emote, userID, receivedCount)
 	if err != nil {
 		return 0, 0, err
 	}

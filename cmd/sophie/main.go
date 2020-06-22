@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"flag"
 	"fmt"
 	"io/ioutil"
@@ -12,8 +13,10 @@ import (
 	"time"
 
 	"github.com/BurntSushi/toml"
+	"github.com/SonarBeserk/sophie-go/internal/db"
+	"github.com/SonarBeserk/sophie-go/internal/embed"
+	"github.com/SonarBeserk/sophie-go/internal/helpers"
 	"github.com/bwmarrin/discordgo"
-	bolt "go.etcd.io/bbolt"
 )
 
 // Config represents the configuration for the bot
@@ -27,19 +30,22 @@ type Emote struct {
 	URL  string
 }
 
+type contextKey string
+
 // Variables used for command line parameters
 var (
 	Token        string
 	emotesFile   string
 	databaseFile string
 
-	db *bolt.DB
+	database *db.Database
 
-	userNames map[string]string    = map[string]string{}
-	emotes    map[string]EmbedFunc = map[string]EmbedFunc{
-		"smug": createSmugEmbed,
+	emotes map[string]embed.Func = map[string]embed.Func{
+		"smug": embed.CreateSmugEmbed,
 	}
 	emoteImages map[string][]string = map[string][]string{}
+
+	databaseCtx contextKey = "db"
 )
 
 func init() {
@@ -56,13 +62,13 @@ func main() {
 		return
 	}
 
-	database, err := openOrConfigureDatabase(databaseFile)
+	db, err := db.OpenOrConfigureDatabase(databaseFile)
 	if err != nil {
 		fmt.Printf("error loading database file %s: %v", databaseFile, err)
 	}
 
-	db = database
-	defer db.Close()
+	database = db
+	defer database.Close()
 
 	// Create a new Discord session using the provided bot token.
 	dg, err := discordgo.New("Bot " + Token)
@@ -118,7 +124,7 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 		return
 	}
 
-	isPrivate, err := isPrivateChat(s, m.ChannelID)
+	isPrivate, err := helpers.IsPrivateChat(s, m.ChannelID)
 	if err != nil {
 		fmt.Printf("Error occurred verifying channel type %s %v", m.ChannelID, err)
 	}
@@ -128,7 +134,7 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 		return
 	}
 
-	userName, err := getUserName(s, m.GuildID, s.State.User.ID)
+	userName, err := helpers.GetUserName(s, m.GuildID, s.State.User.ID)
 	if err != nil {
 		fmt.Printf("Error occurred determining guild username %s %v", m.GuildID, err)
 	}
@@ -155,7 +161,7 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 
 	if len(msgParts) > 2 {
 		userName := msgParts[2]
-		usr, err := getUserByName(s, m.GuildID, userName)
+		usr, err := helpers.GetUserByName(s, m.GuildID, userName)
 		if err != nil {
 			fmt.Printf("Error occurred getting username %s %v", userName, err)
 			return
@@ -181,7 +187,11 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 	r := rand.Intn(len(emoteImages[emote]))
 
 	image := emoteImages["smug"][r]
-	embed, err := embedFunc(senderUsr, receiverUsr, image, message)
+
+	c := context.Background()
+	ctx := context.WithValue(c, databaseCtx, database)
+
+	embed, err := embedFunc(ctx, senderUsr, receiverUsr, image, message)
 	if err != nil {
 		fmt.Printf("Error occurred creating embed %v", err)
 		return
@@ -192,54 +202,4 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 		fmt.Printf("Error occurred sending embed %v", err)
 		return
 	}
-}
-
-func isPrivateChat(s *discordgo.Session, channelID string) (bool, error) {
-	channel, err := s.State.Channel(channelID)
-	if err != nil {
-		if channel, err = s.Channel(channelID); err != nil {
-			fmt.Printf("Error occurred getting channel %s %v", channelID, err)
-			return true, err
-		}
-	}
-
-	return channel.Type != discordgo.ChannelTypeGuildText, nil
-}
-
-func getUserName(s *discordgo.Session, guildID string, userID string) (string, error) {
-	key := guildID + "|" + userID
-	name, ok := userNames[key]
-
-	if !ok {
-		usr, err := s.GuildMember(guildID, userID)
-		if err != nil {
-			fmt.Printf("Error occurred getting username %s %v", userID, err)
-			return "", err
-		}
-
-		if usr.Nick != "" {
-			userNames[key] = usr.Nick
-		} else {
-			userNames[key] = usr.User.Username
-		}
-
-		name = userNames[key]
-	}
-
-	return name, nil
-}
-
-func getUserByName(s *discordgo.Session, GuildID string, userName string) (*discordgo.Member, error) {
-	members, err := s.GuildMembers(GuildID, "", 1000)
-	if err != nil {
-		return nil, err
-	}
-
-	for _, member := range members {
-		if member.Nick == userName || member.User.Username == userName {
-			return member, nil
-		}
-	}
-
-	return nil, nil
 }

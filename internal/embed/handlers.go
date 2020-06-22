@@ -1,19 +1,33 @@
-package main
+package embed
 
 import (
+	"context"
+	"errors"
 	"strconv"
 
+	"github.com/SonarBeserk/sophie-go/internal/db"
 	"github.com/bwmarrin/discordgo"
 )
 
-// EmbedFunc represents a method used to create message embeds
-type EmbedFunc func(sender *discordgo.Member, receiver *discordgo.Member, image string, message string) (*discordgo.MessageEmbed, error)
+type contextKey string
+
+var (
+	databaseCtx contextKey = "db"
+)
+
+// Func represents a method used to create message embeds
+type Func func(ctx context.Context, sender *discordgo.Member, receiver *discordgo.Member, image string, message string) (*discordgo.MessageEmbed, error)
 
 var (
 	smugKey = "smug"
 )
 
-func createSmugEmbed(sender *discordgo.Member, receiver *discordgo.Member, image string, message string) (*discordgo.MessageEmbed, error) {
+func CreateSmugEmbed(ctx context.Context, sender *discordgo.Member, receiver *discordgo.Member, image string, message string) (*discordgo.MessageEmbed, error) {
+	db, ok := ctx.Value(databaseCtx).(db.Database)
+	if !ok {
+		return nil, errors.New("Failed to get database from context")
+	}
+
 	senderName := sender.User.Username
 
 	if sender.Nick != "" {
@@ -32,12 +46,12 @@ func createSmugEmbed(sender *discordgo.Member, receiver *discordgo.Member, image
 	stats := ""
 
 	if sender != nil && receiver == nil {
-		sentCount, receivedCount, err := getEmoteCountsForUser(smugKey, sender.User.ID)
+		sentCount, receivedCount, err := db.GetEmoteCountsForUser(smugKey, sender.User.ID)
 		if err != nil {
 			return nil, err
 		}
 
-		err = setEmoteSentUsage(smugKey, sender.User.ID, sentCount+1)
+		err = db.SetEmoteSentUsage(smugKey, sender.User.ID, sentCount+1)
 		if err != nil {
 			return nil, err
 		}
@@ -47,22 +61,22 @@ func createSmugEmbed(sender *discordgo.Member, receiver *discordgo.Member, image
 	}
 
 	if sender != nil && receiver != nil {
-		sentCount, err := getEmoteSentUsage(smugKey, sender.User.ID)
+		sentCount, err := db.GetEmoteSentUsage(smugKey, sender.User.ID)
 		if err != nil {
 			return nil, err
 		}
 
-		err = setEmoteSentUsage(smugKey, sender.User.ID, sentCount+1)
+		err = db.SetEmoteSentUsage(smugKey, sender.User.ID, sentCount+1)
 		if err != nil {
 			return nil, err
 		}
 
-		receivedCount, err := getEmoteReceivedUsage(smugKey, receiver.User.ID)
+		receivedCount, err := db.GetEmoteReceivedUsage(smugKey, receiver.User.ID)
 		if err != nil {
 			return nil, err
 		}
 
-		err = setEmoteReceivedUsage(smugKey, receiver.User.ID, receivedCount+1)
+		err = db.SetEmoteReceivedUsage(smugKey, receiver.User.ID, receivedCount+1)
 		if err != nil {
 			return nil, err
 		}
