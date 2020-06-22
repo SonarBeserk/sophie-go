@@ -143,7 +143,7 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 	// Add randomness
 	rand.Seed(time.Now().UnixNano())
 
-	r := rand.Intn(len(emoteImages[emote]) + 1)
+	r := rand.Intn(len(emoteImages[emote]))
 	fmt.Println(r)
 
 	image := emoteImages["smug"][r]
