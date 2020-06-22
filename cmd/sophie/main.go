@@ -26,8 +26,6 @@ type Config struct {
 	Gifs   []emote.Gif   `toml:"gif"`
 }
 
-type contextKey string
-
 // Variables used for command line parameters
 var (
 	Token        string
@@ -39,7 +37,7 @@ var (
 	emotes      map[string]emote.Emote = map[string]emote.Emote{}
 	emoteImages map[string][]string    = map[string][]string{}
 
-	databaseCtx contextKey = "db"
+	databaseCtx embed.ContextKey = "db"
 )
 
 func init() {
@@ -183,7 +181,7 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 	emoteEntry := emotes[emote]
 
 	c := context.Background()
-	ctx := context.WithValue(c, databaseCtx, database)
+	ctx := context.WithValue(c, databaseCtx, *database)
 
 	embed, err := embed.CreateEmbed(ctx, emoteEntry, senderUsr, receiverUsr, image, message)
 	if err != nil {

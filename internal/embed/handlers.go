@@ -12,12 +12,13 @@ import (
 )
 
 var (
-	databaseCtx contextKey = "db"
+	databaseCtx ContextKey = "db"
 
 	smugKey = "smug"
 )
 
-type contextKey string
+// ContextKey is used to store a value in context
+type ContextKey string
 
 // CreateEmbed creates an embed
 func CreateEmbed(ctx context.Context, em emote.Emote, sender *discordgo.Member, receiver *discordgo.Member, image string, message string) (*discordgo.MessageEmbed, error) {
