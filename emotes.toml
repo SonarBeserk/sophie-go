@@ -110,6 +110,18 @@ Url = 'https://thumbs.gfycat.com/GrippingDeliciousFieldmouse-small.gif'
 
 # sad (user) (reason)
 
+# scream
+[[emote]]
+Verb = 'scream'
+SenderMessage = '**%v** is **Screaming**'
+SenderDescription = '%v has screamed %v times and has been screamed at %v times'
+ReceiverMessage = '**%v** is **Screaming** at **%v**'
+ReceiverDescription = '%v has screamed %v times and has been screamed at %v times'
+
+[[gif]]
+Verb = 'scream'
+Url = 'https://thumbs.gfycat.com/FakeDecentAnophelesmosquito-small.gif'
+
 # shoot [user] (reason)
 
 # shrug (user) (reason)
