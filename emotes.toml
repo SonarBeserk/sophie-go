@@ -39,6 +39,40 @@
 # highfive [user] (reason) - Give someone a high five! Yeah!
 
 # hug [user] (reason) - Give someone a big hug, we all want a hug sometime
+[[emote]]
+Verb = 'hug'
+SenderMessage = '**%v** wants a **hug**'
+SenderDescription = '%v has hugged %v people and has been hugged by %v people'
+ReceiverMessage = '**%v** is **hugging** **%v**'
+ReceiverDescription = '%v has hugged %v people and has been hugged by %v people'
+
+[[gif]]
+Verb = 'hug'
+Url = 'https://thumbs.gfycat.com/VelvetyPhonyHerculesbeetle-small.gif'
+
+[[gif]]
+Verb = 'hug'
+Url = 'https://thumbs.gfycat.com/NecessaryWaterloggedGalapagosalbatross-small.gif'
+
+[[gif]]
+Verb = 'hug'
+Url = 'https://thumbs.gfycat.com/ScaryFlippantKatydid-small.gif'
+
+[[gif]]
+Verb = 'hug'
+Url = 'https://thumbs.gfycat.com/BadHandmadeAphid-small.gif'
+
+[[gif]]
+Verb = 'hug'
+Url = 'https://thumbs.gfycat.com/HelplessFatJapanesebeetle-small.gif'
+
+[[gif]]
+Verb = 'hug'
+Url = 'https://thumbs.gfycat.com/DangerousSmallIsabellineshrike-small.gif'
+
+[[gif]]
+Verb = 'hug'
+Url = 'https://thumbs.gfycat.com/GrippingDeliciousFieldmouse-small.gif'
 
 # jojo - ORA ORA ORA ORA ORA MUDA MUDA MUDA MUDA MUDA
 
