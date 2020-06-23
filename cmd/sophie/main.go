@@ -48,6 +48,12 @@ func init() {
 }
 
 func main() {
+	defer func() {
+		if err := recover(); err != nil {
+			fmt.Fprintf(os.Stderr, "Exception: %v\n", err)
+		}
+	}()
+
 	err := loadEmoteMaps(emotesFile)
 	if err != nil {
 		fmt.Printf("Error loading emotes file %s: %v\n", emotesFile, err)
@@ -174,6 +180,10 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 
 	// Add randomness
 	rand.Seed(time.Now().UnixNano())
+
+	if len(emoteImages[emote]) == 0 {
+		return
+	}
 
 	r := rand.Intn(len(emoteImages[emote]))
 
