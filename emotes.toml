@@ -131,21 +131,20 @@ Url = 'https://thumbs.gfycat.com/FakeDecentAnophelesmosquito-small.gif'
 # sleep (user) (reason)
 
 # smug (user) (reason)
-
 [[emote]]
-Verb = "smug"
-SenderMessage = "**%v** is feeling **Smug**"
-SenderDescription = "%v has been smug %v times and has been treated smugly %v times"
-ReceiverMessage = "**%v** is feeling **Smug** towards **%v**"
-ReceiverDescription = "%v has been smug %v times and has been treated smugly %v times"
+Verb = 'smug'
+SenderMessage = '**%v** is feeling **Smug**'
+SenderDescription = '%v has been smug %v times and has been treated smugly %v times'
+ReceiverMessage = '**%v** is feeling **Smug** towards **%v**'
+ReceiverDescription = '%v has been smug %v times and has been treated smugly %v times'
 
 [[gif]]
-verb = "smug"
-url = "https://thumbs.gfycat.com/ShadowyAdeptAlleycat-small.gif"
+verb = 'smug'
+url = 'https://thumbs.gfycat.com/ShadowyAdeptAlleycat-small.gif'
 
 [[gif]]
-verb = "smug"
-url = "https://i.imgur.com/bVdCRD3.gif"
+verb = 'smug'
+url = 'https://i.imgur.com/bVdCRD3.gif'
 
 # stab [user] (reason)
 
