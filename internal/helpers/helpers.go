@@ -1,6 +1,8 @@
 package helpers
 
 import (
+	"strings"
+
 	"github.com/bwmarrin/discordgo"
 	"github.com/pkg/errors"
 )
@@ -42,13 +44,17 @@ func GetUserName(s *discordgo.Session, guildID string, userID string) (string, e
 	return name, nil
 }
 
-func GetUserByName(s *discordgo.Session, GuildID string, userName string) (*discordgo.Member, error) {
+func GetUserByName(s *discordgo.Session, GuildID string, userName string, fuzzy bool) (*discordgo.Member, error) {
 	members, err := s.GuildMembers(GuildID, "", 1000)
 	if err != nil {
 		return nil, err
 	}
 
 	for _, member := range members {
+		if fuzzy && strings.HasPrefix(member.Nick, userName) || fuzzy && strings.HasPrefix(member.User.Username, userName) {
+			return member, nil
+		}
+
 		if member.Nick == userName || member.User.Username == userName {
 			return member, nil
 		}

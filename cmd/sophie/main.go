@@ -163,7 +163,7 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 
 	if len(msgParts) > 2 {
 		userName := msgParts[2]
-		usr, err := helpers.GetUserByName(s, m.GuildID, userName)
+		usr, err := helpers.GetUserByName(s, m.GuildID, userName, true)
 		if err != nil {
 			fmt.Printf("Error occurred getting username %s %v\n", userName, err)
 			return
@@ -187,7 +187,7 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 
 	r := rand.Intn(len(emoteImages[emote]))
 
-	image := emoteImages["smug"][r]
+	image := emoteImages[emote][r]
 	emoteEntry := emotes[emote]
 
 	c := context.Background()
