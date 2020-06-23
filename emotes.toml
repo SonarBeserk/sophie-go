@@ -147,6 +147,16 @@ verb = 'smug'
 url = 'https://i.imgur.com/bVdCRD3.gif'
 
 # stab [user] (reason)
+[[emote]]
+Verb = 'stab'
+SenderMessage = '**%v** is feeling **stabby** :knife:'
+SenderDescription = '%v has stabbed others %v times and has been stabbed %v times'
+ReceiverMessage = '**%v** is **Stabbing** **%v**'
+ReceiverDescription = '%v has stabbed others %v times and has been stabbed %v times'
+
+[[gif]]
+Verb = 'stab'
+url = ''
 
 # stare (user) (reason)
 
