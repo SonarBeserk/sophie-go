@@ -4,7 +4,6 @@ import (
 	"context"
 	"errors"
 	"fmt"
-	"strconv"
 
 	"github.com/SonarBeserk/sophie-go/internal/db"
 	"github.com/SonarBeserk/sophie-go/internal/emote"
@@ -13,8 +12,6 @@ import (
 
 var (
 	databaseCtx ContextKey = "db"
-
-	smugKey = "smug"
 )
 
 // ContextKey is used to store a value in context
@@ -45,43 +42,43 @@ func CreateEmbed(ctx context.Context, em emote.Emote, sender *discordgo.Member, 
 	stats := ""
 
 	if sender != nil && receiver == nil {
-		sentCount, receivedCount, err := db.GetEmoteCountsForUser(smugKey, sender.User.ID)
+		sentCount, receivedCount, err := db.GetEmoteCountsForUser(em.Verb, sender.User.ID)
 		if err != nil {
 			return nil, err
 		}
 
-		err = db.SetEmoteSentUsage(smugKey, sender.User.ID, sentCount+1)
+		err = db.SetEmoteSentUsage(em.Verb, sender.User.ID, sentCount+1)
 		if err != nil {
 			return nil, err
 		}
 
 		message = fmt.Sprintf(em.SenderMessage, senderName)
-		stats = fmt.Sprintf(em.SenderDescription, senderName, strconv.Itoa(sentCount), strconv.Itoa(receivedCount))
+		stats = fmt.Sprintf(em.SenderDescription, senderName, sentCount, receivedCount)
 	}
 
 	if sender != nil && receiver != nil {
-		sentCount, err := db.GetEmoteSentUsage(smugKey, sender.User.ID)
+		sentCount, err := db.GetEmoteSentUsage(em.Verb, sender.User.ID)
 		if err != nil {
 			return nil, err
 		}
 
-		err = db.SetEmoteSentUsage(smugKey, sender.User.ID, sentCount+1)
+		err = db.SetEmoteSentUsage(em.Verb, sender.User.ID, sentCount+1)
 		if err != nil {
 			return nil, err
 		}
 
-		receivedCount, err := db.GetEmoteReceivedUsage(smugKey, receiver.User.ID)
+		receivedCount, err := db.GetEmoteReceivedUsage(em.Verb, receiver.User.ID)
 		if err != nil {
 			return nil, err
 		}
 
-		err = db.SetEmoteReceivedUsage(smugKey, receiver.User.ID, receivedCount+1)
+		err = db.SetEmoteReceivedUsage(em.Verb, receiver.User.ID, receivedCount+1)
 		if err != nil {
 			return nil, err
 		}
 
 		message = fmt.Sprintf(em.ReceiverMessage, senderName, receiverName)
-		stats = fmt.Sprintf(em.ReceiverDescription, strconv.Itoa(sentCount), strconv.Itoa(receivedCount))
+		stats = fmt.Sprintf(em.ReceiverDescription, sentCount, receivedCount)
 	}
 
 	embed := NewEmbed().
