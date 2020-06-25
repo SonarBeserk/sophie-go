@@ -141,7 +141,7 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 		fmt.Printf("Error occurred determining guild username %s %v\n", m.GuildID, err)
 	}
 
-	if !strings.HasPrefix(m.Content, userName) {
+	if !strings.HasPrefix(strings.ToLower(m.Content), userName) {
 		return
 	}
 
