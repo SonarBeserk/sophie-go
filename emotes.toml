@@ -47,32 +47,32 @@ ReceiverMessage = '**%[1]s** is **hugging** **%[2]s**'
 ReceiverDescription = '%[1]s has hugged %[2]d people and has been hugged by %[3]d people'
 
 [[gif]]
-Verb = 'hug'
-Url = 'https://thumbs.gfycat.com/VelvetyPhonyHerculesbeetle-small.gif'
+verb = 'hug'
+url = 'https://thumbs.gfycat.com/VelvetyPhonyHerculesbeetle-small.gif'
 
 [[gif]]
-Verb = 'hug'
-Url = 'https://thumbs.gfycat.com/NecessaryWaterloggedGalapagosalbatross-small.gif'
+verb = 'hug'
+url = 'https://thumbs.gfycat.com/NecessaryWaterloggedGalapagosalbatross-small.gif'
 
 [[gif]]
-Verb = 'hug'
-Url = 'https://thumbs.gfycat.com/ScaryFlippantKatydid-small.gif'
+verb = 'hug'
+url = 'https://thumbs.gfycat.com/ScaryFlippantKatydid-small.gif'
 
 [[gif]]
-Verb = 'hug'
-Url = 'https://thumbs.gfycat.com/BadHandmadeAphid-small.gif'
+verb = 'hug'
+url = 'https://thumbs.gfycat.com/BadHandmadeAphid-small.gif'
 
 [[gif]]
-Verb = 'hug'
-Url = 'https://thumbs.gfycat.com/HelplessFatJapanesebeetle-small.gif'
+verb = 'hug'
+url = 'https://thumbs.gfycat.com/HelplessFatJapanesebeetle-small.gif'
 
 [[gif]]
-Verb = 'hug'
-Url = 'https://thumbs.gfycat.com/DangerousSmallIsabellineshrike-small.gif'
+verb = 'hug'
+url = 'https://thumbs.gfycat.com/DangerousSmallIsabellineshrike-small.gif'
 
 [[gif]]
-Verb = 'hug'
-Url = 'https://thumbs.gfycat.com/GrippingDeliciousFieldmouse-small.gif'
+verb = 'hug'
+url = 'https://thumbs.gfycat.com/GrippingDeliciousFieldmouse-small.gif'
 
 # jojo - ORA ORA ORA ORA ORA MUDA MUDA MUDA MUDA MUDA
 
@@ -119,8 +119,12 @@ ReceiverMessage = '**%[1]s** is **Screaming** at **%[2]s**'
 ReceiverDescription = '%[1]s has screamed %[2]d times and has been screamed at %[3]d times'
 
 [[gif]]
-Verb = 'scream'
-Url = 'https://thumbs.gfycat.com/FakeDecentAnophelesmosquito-small.gif'
+verb = 'scream'
+url = 'https://thumbs.gfycat.com/FakeDecentAnophelesmosquito-small.gif'
+
+[[gif]]
+verb = 'scream'
+url = 'https://thumbs.gfycat.com/JubilantRepentantIcelandgull-small.gif'
 
 # shoot [user] (reason)
 
@@ -146,6 +150,10 @@ url = 'https://thumbs.gfycat.com/ShadowyAdeptAlleycat-small.gif'
 verb = 'smug'
 url = 'https://i.imgur.com/bVdCRD3.gif'
 
+[[gif]]
+verb = 'smug'
+url = 'https://thumbs.gfycat.com/SeparateCarelessIndochinesetiger-small.gif'
+
 # stab [user] (reason)
 [[emote]]
 verb = 'stab'
@@ -155,7 +163,15 @@ ReceiverMessage = '**%[1]s** is **Stabbing** **%[2]s**'
 ReceiverDescription = '%[1]s has stabbed others %[2]d times and has been stabbed %[3]d times'
 
 [[gif]]
-Verb = 'stab'
+verb = 'stab'
+url = 'https://thumbs.gfycat.com/DesertedUnitedAmethystsunbird-small.gif'
+
+[[gif]]
+verb = 'stab'
+url = 'https://thumbs.gfycat.com/DeliciousUnequaledGrebe-small.gif'
+
+[[gif]]
+verb = 'stab'
 url = ''
 
 # stare (user) (reason)
