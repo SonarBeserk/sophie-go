@@ -40,11 +40,11 @@
 
 # hug [user] (reason) - Give someone a big hug, we all want a hug sometime
 [[emote]]
-Verb = 'hug'
-SenderMessage = '**%v** wants a **hug**'
-SenderDescription = '%v has hugged %v people and has been hugged by %v people'
-ReceiverMessage = '**%v** is **hugging** **%v**'
-ReceiverDescription = '%v has hugged %v people and has been hugged by %v people'
+verb = 'hug'
+SenderMessage = '**%[1]s** wants a **hug**'
+SenderDescription = '%[1]s has hugged %[2]d people and has been hugged by %[3]d people'
+ReceiverMessage = '**%[1]s** is **hugging** **%[2]s**'
+ReceiverDescription = '%[1]s has hugged %[2]d people and has been hugged by %[3]d people'
 
 [[gif]]
 Verb = 'hug'
@@ -112,11 +112,11 @@ Url = 'https://thumbs.gfycat.com/GrippingDeliciousFieldmouse-small.gif'
 
 # scream
 [[emote]]
-Verb = 'scream'
-SenderMessage = '**%v** is **Screaming**'
-SenderDescription = '%v has screamed %v times and has been screamed at %v times'
-ReceiverMessage = '**%v** is **Screaming** at **%v**'
-ReceiverDescription = '%v has screamed %v times and has been screamed at %v times'
+verb = 'scream'
+SenderMessage = '**%[1]s** is **Screaming**'
+SenderDescription = '%[1]s has screamed %[2]d times and has been screamed at %[3]d times'
+ReceiverMessage = '**%[1]s** is **Screaming** at **%[2]s**'
+ReceiverDescription = '%[1]s has screamed %[2]d times and has been screamed at %[3]d times'
 
 [[gif]]
 Verb = 'scream'
@@ -132,11 +132,11 @@ Url = 'https://thumbs.gfycat.com/FakeDecentAnophelesmosquito-small.gif'
 
 # smug (user) (reason)
 [[emote]]
-Verb = 'smug'
-SenderMessage = '**%v** is feeling **Smug**'
-SenderDescription = '%v has been smug %v times and has been treated smugly %v times'
-ReceiverMessage = '**%v** is feeling **Smug** towards **%v**'
-ReceiverDescription = '%v has been smug %v times and has been treated smugly %v times'
+verb = 'smug'
+SenderMessage = '**%[1]s** is feeling **Smug**'
+SenderDescription = '%[1]s has been smug %[2]d times and has been treated smugly %[3]d times'
+ReceiverMessage = '**%[1]s** is feeling **Smug** towards **%[2]s**'
+ReceiverDescription = '%[1]s has been smug %[2]d times and has been treated smugly %[3]d times'
 
 [[gif]]
 verb = 'smug'
@@ -148,11 +148,11 @@ url = 'https://i.imgur.com/bVdCRD3.gif'
 
 # stab [user] (reason)
 [[emote]]
-Verb = 'stab'
-SenderMessage = '**%v** is feeling **stabby** :knife:'
-SenderDescription = '%v has stabbed others %v times and has been stabbed %v times'
-ReceiverMessage = '**%v** is **Stabbing** **%v**'
-ReceiverDescription = '%v has stabbed others %v times and has been stabbed %v times'
+verb = 'stab'
+SenderMessage = '**%[1]s** is feeling **stabby** :knife:'
+SenderDescription = '%[1]s has stabbed others %[2]d times and has been stabbed %[3]d times'
+ReceiverMessage = '**%[1]s** is **Stabbing** **%[2]s**'
+ReceiverDescription = '%[1]s has stabbed others %[2]d times and has been stabbed %[3]d times'
 
 [[gif]]
 Verb = 'stab'
