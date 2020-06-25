@@ -11,6 +11,7 @@ var (
 	userNames map[string]string = map[string]string{}
 )
 
+// IsPrivateChat checks a channel's type to verify if a channel is private
 func IsPrivateChat(s *discordgo.Session, channelID string) (bool, error) {
 	channel, err := s.State.Channel(channelID)
 	if err != nil {
@@ -22,6 +23,7 @@ func IsPrivateChat(s *discordgo.Session, channelID string) (bool, error) {
 	return channel.Type != discordgo.ChannelTypeGuildText, nil
 }
 
+// GetUserName looks up a member in a guild by username
 func GetUserName(s *discordgo.Session, guildID string, userID string) (string, error) {
 	key := guildID + "|" + userID
 	name, ok := userNames[key]
@@ -44,6 +46,7 @@ func GetUserName(s *discordgo.Session, guildID string, userID string) (string, e
 	return name, nil
 }
 
+// GetUserByName attempts to find a user in a guild by name
 func GetUserByName(s *discordgo.Session, GuildID string, userName string, fuzzy bool) (*discordgo.Member, error) {
 	members, err := s.GuildMembers(GuildID, "", 1000)
 	if err != nil {
@@ -51,11 +54,13 @@ func GetUserByName(s *discordgo.Session, GuildID string, userName string, fuzzy 
 	}
 
 	for _, member := range members {
-		if fuzzy && strings.HasPrefix(member.Nick, userName) || fuzzy && strings.HasPrefix(member.User.Username, userName) {
+		nick := strings.ToLower(member.Nick)
+		memberUserName := strings.ToLower(member.User.Username)
+		if fuzzy && strings.HasPrefix(nick, userName) || fuzzy && strings.HasPrefix(memberUserName, userName) {
 			return member, nil
 		}
 
-		if member.Nick == userName || member.User.Username == userName {
+		if nick == userName || memberUserName == userName {
 			return member, nil
 		}
 	}
