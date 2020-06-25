@@ -57,12 +57,17 @@ func CreateEmbed(ctx context.Context, em emote.Emote, sender *discordgo.Member, 
 	}
 
 	if sender != nil && receiver != nil {
-		sentCount, err := db.GetEmoteSentUsage(em.Verb, sender.User.ID)
+		senderSentCount, err := db.GetEmoteSentUsage(em.Verb, sender.User.ID)
 		if err != nil {
 			return nil, err
 		}
 
-		err = db.SetEmoteSentUsage(em.Verb, sender.User.ID, sentCount+1)
+		err = db.SetEmoteSentUsage(em.Verb, sender.User.ID, senderSentCount+1)
+		if err != nil {
+			return nil, err
+		}
+
+		sentCount, err := db.GetEmoteSentUsage(em.Verb, receiver.User.ID)
 		if err != nil {
 			return nil, err
 		}
@@ -78,7 +83,7 @@ func CreateEmbed(ctx context.Context, em emote.Emote, sender *discordgo.Member, 
 		}
 
 		message = fmt.Sprintf(em.ReceiverMessage, senderName, receiverName)
-		stats = fmt.Sprintf(em.ReceiverDescription, sentCount, receivedCount)
+		stats = fmt.Sprintf(em.ReceiverDescription, receiverName, sentCount, receivedCount)
 	}
 
 	embed := NewEmbed().
