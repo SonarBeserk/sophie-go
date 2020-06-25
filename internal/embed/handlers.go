@@ -39,6 +39,11 @@ func CreateEmbed(ctx context.Context, em emote.Emote, sender *discordgo.Member, 
 		}
 	}
 
+	if message != "" {
+		message = `"` + message + `"`
+	}
+
+	description := ""
 	stats := ""
 
 	if sender != nil && receiver == nil {
@@ -52,7 +57,7 @@ func CreateEmbed(ctx context.Context, em emote.Emote, sender *discordgo.Member, 
 			return nil, err
 		}
 
-		message = fmt.Sprintf(em.SenderMessage, senderName)
+		description = fmt.Sprintf(em.SenderMessage, senderName, message)
 		stats = fmt.Sprintf(em.SenderDescription, senderName, sentCount, receivedCount)
 	}
 
@@ -82,12 +87,12 @@ func CreateEmbed(ctx context.Context, em emote.Emote, sender *discordgo.Member, 
 			return nil, err
 		}
 
-		message = fmt.Sprintf(em.ReceiverMessage, senderName, receiverName)
+		description = fmt.Sprintf(em.ReceiverMessage, senderName, receiverName, message)
 		stats = fmt.Sprintf(em.ReceiverDescription, receiverName, sentCount, receivedCount)
 	}
 
 	embed := NewEmbed().
-		SetDescription(message).
+		SetDescription(description).
 		SetImage(image).
 		SetFooter(stats).
 		SetColor(0x00ff00).MessageEmbed
