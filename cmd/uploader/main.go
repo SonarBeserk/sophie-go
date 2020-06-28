@@ -71,6 +71,8 @@ func main() {
 
 		fileName := image.Verb + "-" + image.URL
 		fileName = urlCleaner.Replace(fileName)
+		extIndex := strings.LastIndexAny(fileName, "_")
+		fileName = fileName[:extIndex] + "." + fileName[extIndex+1:]
 
 		err = downloadFile(image.URL, imagesDirectory+"/"+fileName)
 		if err != nil {
@@ -89,6 +91,7 @@ func main() {
 			Bucket: aws.String(bucketName),
 			Key:    aws.String(fileName),
 			Body:   f,
+			ACL:    aws.String("public-read"),
 		})
 		if err != nil {
 			fmt.Printf("failed to upload file, %v", err)
