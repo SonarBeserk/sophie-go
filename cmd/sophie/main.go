@@ -5,14 +5,13 @@ import (
 	"flag"
 	"fmt"
 	"io/ioutil"
-	"math/rand"
 	"os"
 	"os/signal"
 	"strings"
 	"syscall"
-	"time"
 
 	"github.com/BurntSushi/toml"
+	"github.com/SonarBeserk/sophie-go/internal/commands"
 	"github.com/SonarBeserk/sophie-go/internal/db"
 	"github.com/SonarBeserk/sophie-go/internal/embed"
 	"github.com/SonarBeserk/sophie-go/internal/emote"
@@ -34,8 +33,7 @@ var (
 
 	database *db.Database
 
-	emotes      map[string]emote.Emote = map[string]emote.Emote{}
-	emoteImages map[string][]string    = map[string][]string{}
+	cmds map[string]commands.Func = map[string]commands.Func{}
 
 	databaseCtx embed.ContextKey = "db"
 )
@@ -107,11 +105,12 @@ func loadEmoteMaps(path string) error {
 	}
 
 	for _, emote := range conf.Emotes {
-		emotes[emote.Verb] = emote
+		commands.AddEmote(emote)
+		cmds[emote.Verb] = commands.HandleEmote
 	}
 
 	for _, gif := range conf.Gifs {
-		emoteImages[gif.Verb] = append(emoteImages[gif.Verb], gif.URL)
+		commands.AddEmoteImage(gif)
 	}
 
 	return nil
@@ -146,62 +145,15 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 	}
 
 	msgParts := strings.Split(m.Content, " ")
-
-	if len(msgParts) < 2 {
-		return
-	}
-
-	senderUsr, err := s.GuildMember(m.GuildID, m.Author.ID)
-	if err != nil {
-		fmt.Printf("Error occurred getting username %s %v\n", m.Author.ID, err)
-		return
-	}
-
-	var receiverUsr *discordgo.Member
-
-	message := ""
-
-	if len(msgParts) > 2 {
-		userName := msgParts[2]
-		usr, err := helpers.GetUserByName(s, m.GuildID, userName, true)
-		if err != nil {
-			fmt.Printf("Error occurred getting username %s %v\n", userName, err)
-			return
-		}
-
-		receiverUsr = usr
-	}
-
-	if len(msgParts) > 3 {
-		message = strings.Join(msgParts[3:], " ")
-	}
-
-	emote := strings.ToLower(msgParts[1])
-
-	// Add randomness
-	rand.Seed(time.Now().UnixNano())
-
-	if len(emoteImages[emote]) == 0 {
-		return
-	}
-
-	r := rand.Intn(len(emoteImages[emote]))
-
-	image := emoteImages[emote][r]
-	emoteEntry := emotes[emote]
+	cmd := strings.ToLower(msgParts[1])
 
 	c := context.Background()
 	ctx := context.WithValue(c, databaseCtx, *database)
 
-	embed, err := embed.CreateEmoteEmbed(ctx, emoteEntry, senderUsr, receiverUsr, image, message)
-	if err != nil {
-		fmt.Printf("Error occurred creating embed: %v\n", err)
-		return
-	}
+	cmdFunc := cmds[cmd]
 
-	_, err = s.ChannelMessageSendEmbed(m.ChannelID, embed)
+	err = cmdFunc(ctx, s, msgParts[1:], m.GuildID, m.Author.ID, m.ChannelID)
 	if err != nil {
-		fmt.Printf("Error occurred sending embed: %v\n", err)
-		return
+		fmt.Printf("Error ocurred running command: %v", err)
 	}
 }
