@@ -41,9 +41,9 @@
 # hug [user] (reason) - Give someone a big hug, we all want a hug sometime
 [[emote]]
 verb = 'hug'
-SenderMessage = '**%[1]s** wants a **hug**'
+SenderMessage = '**%[1]s** wants a **hug** %[2]s'
 SenderDescription = '%[1]s has hugged %[2]d people and has been hugged by %[3]d people'
-ReceiverMessage = '**%[1]s** is **hugging** **%[2]s**'
+ReceiverMessage = '**%[1]s** is **hugging** **%[2]s** %[3]s'
 ReceiverDescription = '%[1]s has hugged %[2]d people and has been hugged by %[3]d people'
 
 [[gif]]
@@ -113,9 +113,9 @@ url = 'https://thumbs.gfycat.com/GrippingDeliciousFieldmouse-small.gif'
 # scream
 [[emote]]
 verb = 'scream'
-SenderMessage = '**%[1]s** is **Screaming**'
+SenderMessage = '**%[1]s** is **Screaming** %[2]s'
 SenderDescription = '%[1]s has screamed %[2]d times and has been screamed at %[3]d times'
-ReceiverMessage = '**%[1]s** is **Screaming** at **%[2]s**'
+ReceiverMessage = '**%[1]s** is **Screaming** at **%[2]s** %[3]s'
 ReceiverDescription = '%[1]s has screamed %[2]d times and has been screamed at %[3]d times'
 
 [[gif]]
@@ -137,9 +137,9 @@ url = 'https://thumbs.gfycat.com/JubilantRepentantIcelandgull-small.gif'
 # smug (user) (reason)
 [[emote]]
 verb = 'smug'
-SenderMessage = '**%[1]s** is feeling **Smug**'
+SenderMessage = '**%[1]s** is feeling **Smug** %[2]s'
 SenderDescription = '%[1]s has been smug %[2]d times and has been treated smugly %[3]d times'
-ReceiverMessage = '**%[1]s** is feeling **Smug** towards **%[2]s**'
+ReceiverMessage = '**%[1]s** is feeling **Smug** towards **%[2]s** %[3]s'
 ReceiverDescription = '%[1]s has been smug %[2]d times and has been treated smugly %[3]d times'
 
 [[gif]]
@@ -157,9 +157,9 @@ url = 'https://thumbs.gfycat.com/SeparateCarelessIndochinesetiger-small.gif'
 # stab [user] (reason)
 [[emote]]
 verb = 'stab'
-SenderMessage = '**%[1]s** is feeling **stabby** :knife:'
+SenderMessage = '**%[1]s** is feeling **stabby** :knife: %[2]s'
 SenderDescription = '%[1]s has stabbed others %[2]d times and has been stabbed %[3]d times'
-ReceiverMessage = '**%[1]s** is **Stabbing** **%[2]s**'
+ReceiverMessage = '**%[1]s** is **Stabbing** **%[2]s** %[3]s'
 ReceiverDescription = '%[1]s has stabbed others %[2]d times and has been stabbed %[3]d times'
 
 [[gif]]
