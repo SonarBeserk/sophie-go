@@ -1,6 +1,37 @@
 # bite [user] (reason) - Bite someone in the server. *chomp*
 
-#blush (user) (reason) - Blush, you know, the cute anime girl thing
+[[emote]]
+verb = 'bite'
+SenderMessage = '**%[1]s** is **biting** %[2]s'
+SenderDescription = '%[1]s has bit %[2]d people and has been bit by %[3]d people'
+ReceiverMessage = '**%[1]s** is **biting** **%[2]s** %[3]s'
+ReceiverDescription = '%[1]s has bit %[2]d people and has been bit by %[3]d people'
+
+[[gif]]
+verb = 'bite'
+url = 'https://thumbs.gfycat.com/InbornPessimisticCaracal-small.gif'
+
+[[gif]]
+verb = 'bite'
+url = 'https://thumbs.gfycat.com/DishonestCavernousIndianabat-small.gif'
+
+[[gif]]
+verb = 'bite'
+url = 'https://thumbs.gfycat.com/RaggedEcstaticChital-small.gif'
+
+[[gif]]
+verb = 'bite'
+url = 'https://thumbs.gfycat.com/PleasedIllegalAmericanrobin-small.gif'
+
+[[gif]]
+verb = 'bite'
+url = 'https://thumbs.gfycat.com/DistinctKeyAuk-small.gif'
+
+[[gif]]
+verb = 'bite'
+url = ''
+
+# blush (user) (reason) - Blush, you know, the cute anime girl thing
 
 # bonk [user] (reason) - Hit someone on the head
 
