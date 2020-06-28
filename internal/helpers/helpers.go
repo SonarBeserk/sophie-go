@@ -48,6 +48,8 @@ func GetUserName(s *discordgo.Session, guildID string, userID string) (string, e
 
 // GetUserByName attempts to find a user in a guild by name
 func GetUserByName(s *discordgo.Session, GuildID string, userName string, fuzzy bool) (*discordgo.Member, error) {
+	userName = strings.ToLower(userName)
+
 	members, err := s.GuildMembers(GuildID, "", 1000)
 	if err != nil {
 		return nil, err
