@@ -52,7 +52,9 @@ func CreateEmoteEmbed(ctx context.Context, em emote.Emote, sender *discordgo.Mem
 			return nil, err
 		}
 
-		err = db.SetEmoteSentUsage(em.Verb, sender.User.ID, sentCount+1)
+		sentCount = sentCount + 1
+
+		err = db.SetEmoteSentUsage(em.Verb, sender.User.ID, sentCount)
 		if err != nil {
 			return nil, err
 		}
@@ -67,7 +69,9 @@ func CreateEmoteEmbed(ctx context.Context, em emote.Emote, sender *discordgo.Mem
 			return nil, err
 		}
 
-		err = db.SetEmoteSentUsage(em.Verb, sender.User.ID, senderSentCount+1)
+		senderSentCount = senderSentCount + 1
+
+		err = db.SetEmoteSentUsage(em.Verb, sender.User.ID, senderSentCount)
 		if err != nil {
 			return nil, err
 		}
@@ -82,7 +86,9 @@ func CreateEmoteEmbed(ctx context.Context, em emote.Emote, sender *discordgo.Mem
 			return nil, err
 		}
 
-		err = db.SetEmoteReceivedUsage(em.Verb, receiver.User.ID, receivedCount+1)
+		receivedCount = receivedCount + 1
+
+		err = db.SetEmoteReceivedUsage(em.Verb, receiver.User.ID, receivedCount)
 		if err != nil {
 			return nil, err
 		}
