@@ -193,7 +193,7 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 	c := context.Background()
 	ctx := context.WithValue(c, databaseCtx, *database)
 
-	embed, err := embed.CreateEmbed(ctx, emoteEntry, senderUsr, receiverUsr, image, message)
+	embed, err := embed.CreateEmoteEmbed(ctx, emoteEntry, senderUsr, receiverUsr, image, message)
 	if err != nil {
 		fmt.Printf("Error occurred creating embed: %v\n", err)
 		return

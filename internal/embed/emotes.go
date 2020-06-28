@@ -17,8 +17,8 @@ var (
 // ContextKey is used to store a value in context
 type ContextKey string
 
-// CreateEmbed creates an embed
-func CreateEmbed(ctx context.Context, em emote.Emote, sender *discordgo.Member, receiver *discordgo.Member, image string, message string) (*discordgo.MessageEmbed, error) {
+// CreateEmoteEmbed creates an embed
+func CreateEmoteEmbed(ctx context.Context, em emote.Emote, sender *discordgo.Member, receiver *discordgo.Member, image string, message string) (*discordgo.MessageEmbed, error) {
 	db, ok := ctx.Value(databaseCtx).(db.Database)
 	if !ok {
 		return nil, errors.New("Failed to get database from context")
