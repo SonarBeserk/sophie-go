@@ -9,23 +9,23 @@ ReceiverDescription = '%[1]s has bit %[2]d people and has been bit by %[3]d peop
 
 [[gif]]
 verb = 'bite'
-url = 'https://thumbs.gfycat.com/InbornPessimisticCaracal-small.gif'
+url = 'https://sophie-emote-images.s3.amazonaws.com/bite-thumbs_gfycat_comInbornPessimisticCaracal-small.gif'
 
 [[gif]]
 verb = 'bite'
-url = 'https://thumbs.gfycat.com/DishonestCavernousIndianabat-small.gif'
+url = 'https://sophie-emote-images.s3.amazonaws.com/bite-thumbs_gfycat_comDishonestCavernousIndianabat-small.gif'
 
 [[gif]]
 verb = 'bite'
-url = 'https://thumbs.gfycat.com/RaggedEcstaticChital-small.gif'
+url = 'https://sophie-emote-images.s3.amazonaws.com/bite-thumbs_gfycat_comRaggedEcstaticChital-small.gif'
 
 [[gif]]
 verb = 'bite'
-url = 'https://thumbs.gfycat.com/PleasedIllegalAmericanrobin-small.gif'
+url = 'https://sophie-emote-images.s3.amazonaws.com/bite-thumbs_gfycat_comPleasedIllegalAmericanrobin-small.gif'
 
 [[gif]]
 verb = 'bite'
-url = 'https://thumbs.gfycat.com/DistinctKeyAuk-small.gif'
+url = 'https://sophie-emote-images.s3.amazonaws.com/bite-thumbs_gfycat_comDistinctKeyAuk-small.gif'
 
 [[gif]]
 verb = 'bite'
@@ -59,6 +59,10 @@ url = ''
 
 # feed [user] (reason) - Feed someone some food
 
+[[gif]]
+verb = 'feed'
+url = 'https://sophie-emote-images.s3.amazonaws.com/feed-thumbs_gfycat_comBronzeGentleChinesecrocodilelizard-small.gif'
+
 # glomp [user] (reason) - Nobody knows what this word means... It's jumping on someone for a hug. IT'S A REAL THING... hmph
 
 # handhold [user] (reason) - Hold someone's hand, I assume you two are married. right?
@@ -79,31 +83,31 @@ ReceiverDescription = '%[1]s has hugged %[2]d people and has been hugged by %[3]
 
 [[gif]]
 verb = 'hug'
-url = 'https://thumbs.gfycat.com/VelvetyPhonyHerculesbeetle-small.gif'
+url = 'https://sophie-emote-images.s3.amazonaws.com/hug-thumbs_gfycat_comVelvetyPhonyHerculesbeetle-small.gif'
 
 [[gif]]
 verb = 'hug'
-url = 'https://thumbs.gfycat.com/NecessaryWaterloggedGalapagosalbatross-small.gif'
+url = 'https://sophie-emote-images.s3.amazonaws.com/hug-thumbs_gfycat_comNecessaryWaterloggedGalapagosalbatross-small.gif'
 
 [[gif]]
 verb = 'hug'
-url = 'https://thumbs.gfycat.com/ScaryFlippantKatydid-small.gif'
+url = 'https://sophie-emote-images.s3.amazonaws.com/hug-thumbs_gfycat_comScaryFlippantKatydid-small.gif'
 
 [[gif]]
 verb = 'hug'
-url = 'https://thumbs.gfycat.com/BadHandmadeAphid-small.gif'
+url = 'https://sophie-emote-images.s3.amazonaws.com/hug-thumbs_gfycat_comBadHandmadeAphid-small.gif'
 
 [[gif]]
 verb = 'hug'
-url = 'https://thumbs.gfycat.com/HelplessFatJapanesebeetle-small.gif'
+url = 'https://sophie-emote-images.s3.amazonaws.com/hug-thumbs_gfycat_comHelplessFatJapanesebeetle-small.gif'
 
 [[gif]]
 verb = 'hug'
-url = 'https://thumbs.gfycat.com/DangerousSmallIsabellineshrike-small.gif'
+url = 'https://sophie-emote-images.s3.amazonaws.com/hug-thumbs_gfycat_comDangerousSmallIsabellineshrike-small.gif'
 
 [[gif]]
 verb = 'hug'
-url = 'https://thumbs.gfycat.com/GrippingDeliciousFieldmouse-small.gif'
+url = 'https://sophie-emote-images.s3.amazonaws.com/hug-thumbs_gfycat_comGrippingDeliciousFieldmouse-small.gif'
 
 # jojo - ORA ORA ORA ORA ORA MUDA MUDA MUDA MUDA MUDA
 
@@ -135,6 +139,10 @@ url = 'https://thumbs.gfycat.com/GrippingDeliciousFieldmouse-small.gif'
 
 # poke [user] (reason)
 
+[[gif]]
+verb = 'poke'
+url = 'https://sophie-emote-images.s3.amazonaws.com/poke-thumbs_gfycat_comNeglectedDeliciousHorse-small.gif'
+
 # pout (user) (reason)
 
 # run (user) (reason)
@@ -151,11 +159,11 @@ ReceiverDescription = '%[1]s has screamed %[2]d times and has been screamed at %
 
 [[gif]]
 verb = 'scream'
-url = 'https://thumbs.gfycat.com/FakeDecentAnophelesmosquito-small.gif'
+url = 'https://sophie-emote-images.s3.amazonaws.com/scream-thumbs_gfycat_comFakeDecentAnophelesmosquito-small.gif'
 
 [[gif]]
 verb = 'scream'
-url = 'https://thumbs.gfycat.com/JubilantRepentantIcelandgull-small.gif'
+url = 'https://sophie-emote-images.s3.amazonaws.com/scream-thumbs_gfycat_comJubilantRepentantIcelandgull-small.gif'
 
 # shoot [user] (reason)
 
@@ -175,19 +183,19 @@ ReceiverDescription = '%[1]s has been smug %[2]d times and has been treated smug
 
 [[gif]]
 verb = 'smug'
-url = 'https://thumbs.gfycat.com/ShadowyAdeptAlleycat-small.gif'
+url = 'https://sophie-emote-images.s3.amazonaws.com/smug-thumbs_gfycat_comShadowyAdeptAlleycat-small.gif'
 
 [[gif]]
 verb = 'smug'
-url = 'https://i.imgur.com/bVdCRD3.gif'
+url = 'https://sophie-emote-images.s3.amazonaws.com/smug-i_imgur_combVdCRD3.gif'
 
 [[gif]]
 verb = 'smug'
-url = 'https://thumbs.gfycat.com/SeparateCarelessIndochinesetiger-small.gif'
+url = 'https://sophie-emote-images.s3.amazonaws.com/smug-thumbs_gfycat_comSeparateCarelessIndochinesetiger-small.gif'
 
 [[gif]]
 verb = 'smug'
-url = 'https://thumbs.gfycat.com/ActualTangibleArrowworm-small.gif'
+url = 'https://sophie-emote-images.s3.amazonaws.com/smug-thumbs_gfycat_comActualTangibleArrowworm-small.gif'
 
 # stab [user] (reason)
 [[emote]]
@@ -199,11 +207,11 @@ ReceiverDescription = '%[1]s has stabbed others %[2]d times and has been stabbed
 
 [[gif]]
 verb = 'stab'
-url = 'https://thumbs.gfycat.com/DesertedUnitedAmethystsunbird-small.gif'
+url = 'https://sophie-emote-images.s3.amazonaws.com/stab-thumbs_gfycat_comDesertedUnitedAmethystsunbird-small.gif'
 
 [[gif]]
 verb = 'stab'
-url = 'https://thumbs.gfycat.com/DeliciousUnequaledGrebe-small.gif'
+url = 'https://sophie-emote-images.s3.amazonaws.com/stab-thumbs_gfycat_comDeliciousUnequaledGrebe-small.gif'
 
 [[gif]]
 verb = 'stab'
