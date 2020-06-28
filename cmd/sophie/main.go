@@ -151,6 +151,9 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 	ctx := context.WithValue(c, databaseCtx, *database)
 
 	cmdFunc := cmds[cmd]
+	if cmdFunc == nil {
+		return
+	}
 
 	err = cmdFunc(ctx, s, msgParts[1:], m.GuildID, m.Author.ID, m.ChannelID)
 	if err != nil {
