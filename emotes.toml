@@ -114,6 +114,28 @@ url = 'https://sophie-emote-images.s3.amazonaws.com/hug-thumbs_gfycat_comGrippin
 # kill [user] (reason) - Unalive someone. Commit death on them. Only on Discord though (hopefully...)
 
 # kiss [user] (reason) - Kiss someone on the lips
+[[emote]]
+verb = 'kiss'
+SenderMessage = '**%[1]s** is feeling **affectionate** %[2]s'
+SenderDescription = '%[1]s has kissed %[2]d people and has been kissed by %[3]d people'
+ReceiverMessage = '**%[1]s** is **kissing** **%[2]s** %[3]s :heart:'
+ReceiverDescription = '%[1]s has kissed %[2]d people and has been kissed by %[3]d people'
+
+[[gif]]
+verb = 'kiss'
+url = 'https://thumbs.gfycat.com/OptimisticCrazyAmethystinepython-small.gif'
+
+[[gif]]
+verb = 'kiss'
+url = 'https://thumbs.gfycat.com/InconsequentialMeaslyFly-small.gif'
+
+[[gif]]
+verb = 'kiss'
+url = 'https://thumbs.gfycat.com/GoodnaturedBasicGourami-small.gif'
+
+[[gif]]
+verb = 'kiss'
+url = 'https://thumbs.gfycat.com/NeedyCheeryAidi-small.gif'
 
 # laugh (user) (reason) - Laugh at whatever is going on
 
