@@ -242,6 +242,10 @@ url = 'https://sophie-emote-images.s3.amazonaws.com/scream-thumbs_gfycat_comFake
 verb = 'scream'
 url = 'https://sophie-emote-images.s3.amazonaws.com/scream-thumbs_gfycat_comJubilantRepentantIcelandgull-small.gif'
 
+[[gif]]
+verb = 'scream'
+url = 'https://thumbs.gfycat.com/HopefulGoodEmperorpenguin-small.gif'
+
 # shoot [user] (reason)
 
 # shrug (user) (reason)
@@ -292,7 +296,7 @@ url = 'https://sophie-emote-images.s3.amazonaws.com/stab-thumbs_gfycat_comDelici
 
 [[gif]]
 verb = 'stab'
-url = ''
+url = 'https://thumbs.gfycat.com/HandyUnequaledBlueandgoldmackaw-small.gif'
 
 # stare (user) (reason)
 
@@ -312,6 +316,10 @@ url = 'https://thumbs.gfycat.com/GraciousWiltedAmericanblackvulture-small.gif'
 # think [user] (reason)
 
 # thumbsup (user) (reason)
+
+[[gif]]
+verb = 'thumbsup'
+url = 'https://thumbs.gfycat.com/FeistyWeakDuckbillplatypus-small.gif'
 
 # tickle (user) (reason)
 
