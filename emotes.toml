@@ -299,6 +299,16 @@ verb = 'stab'
 url = 'https://thumbs.gfycat.com/HandyUnequaledBlueandgoldmackaw-small.gif'
 
 # stare (user) (reason)
+[[emote]]
+verb = 'stare'
+SenderMessage = '**%[1]s** is **staring** intently  %[2]s'
+SenderDescription = '%[1]s has stared at others %[2]d times and has been stared at %[3]d times'
+ReceiverMessage = '**%[1]s** is **Staring** at **%[2]s** %[3]s'
+ReceiverDescription = '%[1]s has stared at others %[2]d times and has been stared at %[3]d times'
+
+[[gif]]
+verb = 'stare'
+url = 'https://thumbs.gfycat.com/ImmaculateInbornAntarcticfurseal-small.gif'
 
 # tease [user] (reason)
 
