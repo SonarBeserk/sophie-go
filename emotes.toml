@@ -194,6 +194,13 @@ verb = 'peck'
 url = 'https://thumbs.gfycat.com/IncredibleSoreBillygoat-small.gif'
 
 # poke [user] (reason)
+[[emote]]
+verb = 'poke'
+SenderMessage = '**%[1]s** wants **attention** %[2]s'
+SenderDescription = '%[1]s has poked %[2]d people and has been poked by %[3]d people'
+ReceiverMessage = '**%[1]s** is **poking** **%[2]s** %[3]s'
+ReceiverDescription = '%[1]s has poked %[2]d people and has been poked by %[3]d people'
+
 
 [[gif]]
 verb = 'poke'
