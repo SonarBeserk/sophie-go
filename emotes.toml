@@ -166,6 +166,20 @@ url = 'https://thumbs.gfycat.com/HardtofindCreepyAoudad-small.gif'
 # pat [user] (reason)
 
 # peck [user] (reason)
+[[emote]]
+verb = 'peck'
+SenderMessage = '**%[1]s** is feeling **affectionate** %[2]s'
+SenderDescription = '%[1]s has kissed %[2]d people gently and has been kissed by %[3]d people'
+ReceiverMessage = '**%[1]s** is **pecking** **%[2]s** on the lips %[3]s'
+ReceiverDescription = '%[1]s has kissed %[2]d people gently and has been kissed by %[3]d people'
+
+[[gif]]
+verb = 'peck'
+url = 'https://thumbs.gfycat.com/PointlessIncompatibleArrowcrab-small.gif'
+
+[[gif]]
+verb = 'peck'
+url = 'https://thumbs.gfycat.com/IncredibleSoreBillygoat-small.gif'
 
 # poke [user] (reason)
 
