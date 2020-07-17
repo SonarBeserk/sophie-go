@@ -77,6 +77,7 @@ func main() {
 
 	// Register the messageCreate func as a callback for MessageCreate events.
 	dg.AddHandler(messageCreate)
+	dg.AddHandler(guildMemberUpdate)
 
 	// Open a websocket connection to Discord and begin listening.
 	err = dg.Open()
@@ -142,11 +143,14 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 		fmt.Printf("Error occurred determining guild username %s %v\n", m.GuildID, err)
 	}
 
-	if !strings.HasPrefix(strings.ToLower(m.Content), strings.ToLower(userName)) {
+	msgParts := strings.Split(m.Content, " ")
+
+	name := strings.ToLower(msgParts[0])
+
+	if !strings.HasPrefix(name, strings.ToLower(userName)) && !strings.HasPrefix(name, strings.ToLower(s.State.User.Username)) {
 		return
 	}
 
-	msgParts := strings.Split(m.Content, " ")
 	cmd := strings.ToLower(msgParts[1])
 
 	c := context.Background()
@@ -160,5 +164,11 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 	err = cmdFunc(ctx, s, msgParts[1:], m.GuildID, m.Author.ID, m.ChannelID)
 	if err != nil {
 		fmt.Printf("Error ocurred running command: %v", err)
+	}
+}
+
+func guildMemberUpdate(s *discordgo.Session, gmu *discordgo.GuildMemberUpdate) {
+	if gmu.User.ID == s.State.User.ID {
+		helpers.ClearUsernameCacheByID(gmu.GuildID, s.State.User.ID)
 	}
 }

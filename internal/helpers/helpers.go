@@ -47,10 +47,10 @@ func GetUserName(s *discordgo.Session, guildID string, userID string) (string, e
 }
 
 // GetUserByName attempts to find a user in a guild by name
-func GetUserByName(s *discordgo.Session, GuildID string, userName string, fuzzy bool) (*discordgo.Member, error) {
+func GetUserByName(s *discordgo.Session, guildID string, userName string, fuzzy bool) (*discordgo.Member, error) {
 	userName = strings.ToLower(userName)
 
-	members, err := s.GuildMembers(GuildID, "", 1000)
+	members, err := s.GuildMembers(guildID, "", 1000)
 	if err != nil {
 		return nil, err
 	}
@@ -68,4 +68,10 @@ func GetUserByName(s *discordgo.Session, GuildID string, userName string, fuzzy 
 	}
 
 	return nil, nil
+}
+
+// ClearUsernameCacheByID removes cached usernames
+func ClearUsernameCacheByID(guildID string, userID string) {
+	key := guildID + "|" + userID
+	delete(userNames, key)
 }
