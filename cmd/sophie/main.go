@@ -33,7 +33,9 @@ var (
 
 	database *db.Database
 
-	cmds map[string]commands.Func = map[string]commands.Func{}
+	cmds map[string]commands.Func = map[string]commands.Func{
+		"emotes": commands.HandleListEmotes,
+	}
 
 	databaseCtx embed.ContextKey = "db"
 )
