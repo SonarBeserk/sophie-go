@@ -243,6 +243,17 @@ url = ''
 
 # tease [user] (reason)
 
+[[emote]]
+verb = 'tease'
+SenderMessage = '**%[1]s** is **Teasing** %[2]s'
+SenderDescription = '%[1]s has teased others %[2]d times and has been teased %[3]d times'
+ReceiverMessage = '**%[1]s** is **Teasing** **%[2]s** %[3]s'
+ReceiverDescription = '%[1]s has teased others %[2]d times and has been teased %[3]d times'
+
+[[gif]]
+verb = 'tease'
+url = 'https://thumbs.gfycat.com/GraciousWiltedAmericanblackvulture-small.gif'
+
 # think [user] (reason)
 
 # thumbsup (user) (reason)
