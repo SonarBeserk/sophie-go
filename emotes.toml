@@ -42,6 +42,9 @@ url = 'https://thumbs.gfycat.com/GraciousWiltedAmericanblackvulture-small.gif'
 # chase [user] (reason) - Chase someone who is running away
 
 # cheer (user) (reason) - Cheer for someone, yay!
+[[gif]]
+verb = 'cheer'
+url = 'https://thumbs.gfycat.com/AcceptableTiredAmericanbobtail-small.gif'
 
 # cringe (user) (reason) - Cringe at whatever stuff is happening in chat
 
@@ -52,8 +55,15 @@ url = 'https://thumbs.gfycat.com/GraciousWiltedAmericanblackvulture-small.gif'
 # dab (user) (reason) - Dabs... someone suggested this... don't blame me
 
 # dance (user) (reason) - Dance around in chat
+[[gif]]
+verb = 'dance'
+url = 'https://thumbs.gfycat.com/CautiousTanGeese-small.gif'
 
 # die (user) (reason) - Wish yourself or someone else death. Virtually though, hopefully
+
+[[gif]]
+verb = 'die'
+url = 'https://thumbs.gfycat.com/AmusedUnevenBird-small.gif'
 
 # facepalm (user) (reason) - Facepalm. Because people are dumb in chat
 
@@ -80,6 +90,10 @@ url = 'https://thumbs.gfycat.com/DiligentRightKillerwhale-small.gif'
 # handhold [user] (reason) - Hold someone's hand, I assume you two are married. right?
 
 # happy (user) (reason) - Express how happy you are
+
+[[gif]]
+verb = 'happy'
+url = 'https://thumbs.gfycat.com/BeautifulWetImperialeagle-small.gif'
 
 # hate [user] (reason) - Express how unhappy you are with someone's existance
 
