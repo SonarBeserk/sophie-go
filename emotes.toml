@@ -311,7 +311,6 @@ verb = 'stare'
 url = 'https://thumbs.gfycat.com/ImmaculateInbornAntarcticfurseal-small.gif'
 
 # tease [user] (reason)
-
 [[emote]]
 verb = 'tease'
 SenderMessage = '**%[1]s** is **Teasing** %[2]s'
