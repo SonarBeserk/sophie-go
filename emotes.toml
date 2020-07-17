@@ -60,6 +60,12 @@ verb = 'dance'
 url = 'https://thumbs.gfycat.com/CautiousTanGeese-small.gif'
 
 # die (user) (reason) - Wish yourself or someone else death. Virtually though, hopefully
+[[emote]]
+verb = 'die'
+SenderMessage = '**%[1]s** has given up on **living** %[2]s'
+SenderDescription = '%[1]s has been fed up %[2]d people and has %[3]d people have been fed up with them'
+ReceiverMessage = '**%[1]s** is **wishing harm** on **%[2]s** %[3]s'
+ReceiverDescription = '%[1]s has been fed up %[2]d people and has %[3]d people have been fed up with them'
 
 [[gif]]
 verb = 'die'
@@ -68,6 +74,12 @@ url = 'https://thumbs.gfycat.com/AmusedUnevenBird-small.gif'
 # facepalm (user) (reason) - Facepalm. Because people are dumb in chat
 
 # feed [user] (reason) - Feed someone some food
+[[emote]]
+verb = 'feed'
+SenderMessage = '**%[1]s** wants **food** %[2]s'
+SenderDescription = '%[1]s has fed %[2]d people and has been fed by %[3]d people'
+ReceiverMessage = '**%[1]s** is **feeding** **%[2]s** %[3]s'
+ReceiverDescription = '%[1]s has fed %[2]d people and has been fed by %[3]d people'
 
 [[gif]]
 verb = 'feed'
