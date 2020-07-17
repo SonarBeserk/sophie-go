@@ -109,8 +109,6 @@ url = 'https://sophie-emote-images.s3.amazonaws.com/hug-thumbs_gfycat_comDangero
 verb = 'hug'
 url = 'https://sophie-emote-images.s3.amazonaws.com/hug-thumbs_gfycat_comGrippingDeliciousFieldmouse-small.gif'
 
-# jojo - ORA ORA ORA ORA ORA MUDA MUDA MUDA MUDA MUDA
-
 # kill [user] (reason) - Unalive someone. Commit death on them. Only on Discord though (hopefully...)
 
 # kiss [user] (reason) - Kiss someone on the lips
@@ -264,6 +262,6 @@ url = 'https://thumbs.gfycat.com/GraciousWiltedAmericanblackvulture-small.gif'
 
 # wag (user) (reason)
 
-#wave (user) (reason)
+# wave (user) (reason)
 
-#wink (user) (reason)
+# wink (user) (reason)
