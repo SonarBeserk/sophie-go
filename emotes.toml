@@ -152,6 +152,16 @@ url = 'https://thumbs.gfycat.com/NeedyCheeryAidi-small.gif'
 # nuzzle [user] (reason)
 
 # panic [user] (reason)
+[[emote]]
+verb = 'panic'
+SenderMessage = '**%[1]s** is **panicing** %[2]s'
+SenderDescription = '%[1]s has asked for help from %[2]d people and has been comforted by %[3]d people'
+ReceiverMessage = '**%[1]s** is **comforting** **%[2]s** %[3]s'
+ReceiverDescription = '%[1]s has asked for help from %[2]d people and has been comforted by %[3]d people'
+
+[[gif]]
+verb = 'panic'
+url = 'https://thumbs.gfycat.com/HardtofindCreepyAoudad-small.gif'
 
 # pat [user] (reason)
 
