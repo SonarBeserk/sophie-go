@@ -1,5 +1,4 @@
 # bite [user] (reason) - Bite someone in the server. *chomp*
-
 [[emote]]
 verb = 'bite'
 SenderMessage = '**%[1]s** is **biting** %[2]s'
@@ -72,6 +71,9 @@ verb = 'die'
 url = 'https://thumbs.gfycat.com/AmusedUnevenBird-small.gif'
 
 # facepalm (user) (reason) - Facepalm. Because people are dumb in chat
+[[gif]]
+verb = 'facepalm'
+url = 'https://thumbs.gfycat.com/ChiefActiveKinkajou-small.gif'
 
 # feed [user] (reason) - Feed someone some food
 [[emote]]
@@ -87,7 +89,7 @@ url = 'https://sophie-emote-images.s3.amazonaws.com/feed-thumbs_gfycat_comBronze
 
 [[gif]]
 verb = 'feed'
-url = 'https://gfycat.com/elasticsmoothhorse-adventure-bubblegum-delicious-spaghetti'
+url = 'https://thumbs.gfycat.com/ElasticSmoothHorse-small.gif'
 
 [[gif]]
 verb = 'feed'
@@ -189,6 +191,10 @@ url = 'https://thumbs.gfycat.com/NeedyCheeryAidi-small.gif'
 
 # nuzzle [user] (reason)
 
+[[gif]]
+verb = 'nuzzle'
+url = 'https://thumbs.gfycat.com/AccomplishedNeglectedGrouse-small.gif'
+
 # panic [user] (reason)
 [[emote]]
 verb = 'panic'
@@ -258,6 +264,12 @@ url = 'https://sophie-emote-images.s3.amazonaws.com/scream-thumbs_gfycat_comJubi
 verb = 'scream'
 url = 'https://thumbs.gfycat.com/HopefulGoodEmperorpenguin-small.gif'
 
+[[gif]]
+verb = 'scream'
+url = 'https://thumbs.gfycat.com/BruisedSinfulLeafcutterant-small.gif'
+
+
+
 # shoot [user] (reason)
 
 # shrug (user) (reason)
@@ -321,6 +333,10 @@ ReceiverDescription = '%[1]s has stared at others %[2]d times and has been stare
 [[gif]]
 verb = 'stare'
 url = 'https://thumbs.gfycat.com/ImmaculateInbornAntarcticfurseal-small.gif'
+
+[[gif]]
+verb = 'stare'
+url = 'https://thumbs.gfycat.com/HorribleWebbedJaeger-small.gif'
 
 # tease [user] (reason)
 [[emote]]
