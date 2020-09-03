@@ -145,6 +145,10 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 
 	msgParts := strings.Split(m.Content, " ")
 
+	if len(msgParts) <= 1 {
+		return
+	}
+
 	name := strings.ToLower(msgParts[0])
 
 	if !strings.HasPrefix(name, strings.ToLower(userName)) && !strings.HasPrefix(name, strings.ToLower(s.State.User.Username)) {
