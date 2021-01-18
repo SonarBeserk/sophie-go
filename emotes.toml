@@ -28,7 +28,7 @@ url = 'https://sophie-emote-images.s3.amazonaws.com/bite-thumbs_gfycat_comDistin
 
 [[gif]]
 verb = 'bite'
-url = 'https://thumbs.gfycat.com/GraciousWiltedAmericanblackvulture-small.gif'
+url = 'https://sophie-emote-images.s3.amazonaws.com/bite-thumbs_gfycat_comGraciousWiltedAmericanblackvulture-small.gif'
 
 # blush (user) (reason) - Blush, you know, the cute anime girl thing
 
@@ -43,7 +43,7 @@ url = 'https://thumbs.gfycat.com/GraciousWiltedAmericanblackvulture-small.gif'
 # cheer (user) (reason) - Cheer for someone, yay!
 [[gif]]
 verb = 'cheer'
-url = 'https://thumbs.gfycat.com/AcceptableTiredAmericanbobtail-small.gif'
+url = 'https://sophie-emote-images.s3.amazonaws.com/cheer-thumbs_gfycat_comAcceptableTiredAmericanbobtail-small.gif'
 
 # cringe (user) (reason) - Cringe at whatever stuff is happening in chat
 
@@ -56,7 +56,7 @@ url = 'https://thumbs.gfycat.com/AcceptableTiredAmericanbobtail-small.gif'
 # dance (user) (reason) - Dance around in chat
 [[gif]]
 verb = 'dance'
-url = 'https://thumbs.gfycat.com/CautiousTanGeese-small.gif'
+url = 'https://sophie-emote-images.s3.amazonaws.com/dance-thumbs_gfycat_comCautiousTanGeese-small.gif'
 
 # die (user) (reason) - Wish yourself or someone else death. Virtually though, hopefully
 [[emote]]
@@ -68,12 +68,12 @@ ReceiverDescription = '%[1]s has been fed up %[2]d people and has %[3]d people h
 
 [[gif]]
 verb = 'die'
-url = 'https://thumbs.gfycat.com/AmusedUnevenBird-small.gif'
+url = 'https://sophie-emote-images.s3.amazonaws.com/die-thumbs_gfycat_comAmusedUnevenBird-small.gif'
 
 # facepalm (user) (reason) - Facepalm. Because people are dumb in chat
 [[gif]]
 verb = 'facepalm'
-url = 'https://thumbs.gfycat.com/ChiefActiveKinkajou-small.gif'
+url = 'https://sophie-emote-images.s3.amazonaws.com/facepalm-thumbs_gfycat_comChiefActiveKinkajou-small.gif'
 
 # feed [user] (reason) - Feed someone some food
 [[emote]]
@@ -89,15 +89,15 @@ url = 'https://sophie-emote-images.s3.amazonaws.com/feed-thumbs_gfycat_comBronze
 
 [[gif]]
 verb = 'feed'
-url = 'https://thumbs.gfycat.com/ElasticSmoothHorse-small.gif'
+url = 'https://sophie-emote-images.s3.amazonaws.com/feed-thumbs_gfycat_comElasticSmoothHorse-small.gif'
 
 [[gif]]
 verb = 'feed'
-url = 'https://thumbs.gfycat.com/InnocentGenerousBarnswallow-small.gif'
+url = 'https://sophie-emote-images.s3.amazonaws.com/feed-thumbs_gfycat_comInnocentGenerousBarnswallow-small.gif'
 
 [[gif]]
 verb = 'feed'
-url = 'https://thumbs.gfycat.com/DiligentRightKillerwhale-small.gif'
+url = 'https://sophie-emote-images.s3.amazonaws.com/feed-thumbs_gfycat_comDiligentRightKillerwhale-small.gif'
 
 # glomp [user] (reason) - Nobody knows what this word means... It's jumping on someone for a hug. IT'S A REAL THING... hmph
 
@@ -107,7 +107,7 @@ url = 'https://thumbs.gfycat.com/DiligentRightKillerwhale-small.gif'
 
 [[gif]]
 verb = 'happy'
-url = 'https://thumbs.gfycat.com/BeautifulWetImperialeagle-small.gif'
+url = 'https://sophie-emote-images.s3.amazonaws.com/happy-thumbs_gfycat_comBeautifulWetImperialeagle-small.gif'
 
 # hate [user] (reason) - Express how unhappy you are with someone's existance
 
@@ -161,19 +161,19 @@ ReceiverDescription = '%[1]s has kissed %[2]d people and has been kissed by %[3]
 
 [[gif]]
 verb = 'kiss'
-url = 'https://thumbs.gfycat.com/OptimisticCrazyAmethystinepython-small.gif'
+url = 'https://sophie-emote-images.s3.amazonaws.com/kiss-thumbs_gfycat_comOptimisticCrazyAmethystinepython-small.gif'
 
 [[gif]]
 verb = 'kiss'
-url = 'https://thumbs.gfycat.com/InconsequentialMeaslyFly-small.gif'
+url = 'https://sophie-emote-images.s3.amazonaws.com/kiss-thumbs_gfycat_comInconsequentialMeaslyFly-small.gif'
 
 [[gif]]
 verb = 'kiss'
-url = 'https://thumbs.gfycat.com/GoodnaturedBasicGourami-small.gif'
+url = 'https://sophie-emote-images.s3.amazonaws.com/kiss-thumbs_gfycat_comGoodnaturedBasicGourami-small.gif'
 
 [[gif]]
 verb = 'kiss'
-url = 'https://thumbs.gfycat.com/NeedyCheeryAidi-small.gif'
+url = 'https://sophie-emote-images.s3.amazonaws.com/kiss-thumbs_gfycat_comNeedyCheeryAidi-small.gif'
 
 # laugh (user) (reason) - Laugh at whatever is going on
 
@@ -205,7 +205,7 @@ ReceiverDescription = '%[1]s has asked for help from %[2]d people and has been c
 
 [[gif]]
 verb = 'panic'
-url = 'https://thumbs.gfycat.com/HardtofindCreepyAoudad-small.gif'
+url = 'https://sophie-emote-images.s3.amazonaws.com/nuzzle-thumbs_gfycat_comAccomplishedNeglectedGrouse-small.gif'
 
 # pat [user] (reason)
 
@@ -219,11 +219,11 @@ ReceiverDescription = '%[1]s has kissed %[2]d people gently and has been kissed 
 
 [[gif]]
 verb = 'peck'
-url = 'https://thumbs.gfycat.com/PointlessIncompatibleArrowcrab-small.gif'
+url = 'https://sophie-emote-images.s3.amazonaws.com/peck-thumbs_gfycat_comPointlessIncompatibleArrowcrab-small.gif'
 
 [[gif]]
 verb = 'peck'
-url = 'https://thumbs.gfycat.com/IncredibleSoreBillygoat-small.gif'
+url = 'https://sophie-emote-images.s3.amazonaws.com/peck-thumbs_gfycat_comIncredibleSoreBillygoat-small.gif'
 
 # poke [user] (reason)
 [[emote]]
@@ -262,13 +262,11 @@ url = 'https://sophie-emote-images.s3.amazonaws.com/scream-thumbs_gfycat_comJubi
 
 [[gif]]
 verb = 'scream'
-url = 'https://thumbs.gfycat.com/HopefulGoodEmperorpenguin-small.gif'
+url = 'https://sophie-emote-images.s3.amazonaws.com/scream-thumbs_gfycat_comHopefulGoodEmperorpenguin-small.gif'
 
 [[gif]]
 verb = 'scream'
-url = 'https://thumbs.gfycat.com/BruisedSinfulLeafcutterant-small.gif'
-
-
+url = 'https://sophie-emote-images.s3.amazonaws.com/scream-thumbs_gfycat_comBruisedSinfulLeafcutterant-small.gif'
 
 # shoot [user] (reason)
 
@@ -320,7 +318,7 @@ url = 'https://sophie-emote-images.s3.amazonaws.com/stab-thumbs_gfycat_comDelici
 
 [[gif]]
 verb = 'stab'
-url = 'https://thumbs.gfycat.com/HandyUnequaledBlueandgoldmackaw-small.gif'
+url = 'https://sophie-emote-images.s3.amazonaws.com/stab-thumbs_gfycat_comHandyUnequaledBlueandgoldmackaw-small.gif'
 
 # stare (user) (reason)
 [[emote]]
@@ -332,11 +330,11 @@ ReceiverDescription = '%[1]s has stared at others %[2]d times and has been stare
 
 [[gif]]
 verb = 'stare'
-url = 'https://thumbs.gfycat.com/ImmaculateInbornAntarcticfurseal-small.gif'
+url = 'https://sophie-emote-images.s3.amazonaws.com/stare-thumbs_gfycat_comImmaculateInbornAntarcticfurseal-small.gif'
 
 [[gif]]
 verb = 'stare'
-url = 'https://thumbs.gfycat.com/HorribleWebbedJaeger-small.gif'
+url = 'https://sophie-emote-images.s3.amazonaws.com/stare-thumbs_gfycat_comHorribleWebbedJaeger-small.gif'
 
 # tease [user] (reason)
 [[emote]]
@@ -348,7 +346,7 @@ ReceiverDescription = '%[1]s has teased others %[2]d times and has been teased %
 
 [[gif]]
 verb = 'tease'
-url = 'https://thumbs.gfycat.com/GraciousWiltedAmericanblackvulture-small.gif'
+url = 'https://sophie-emote-images.s3.amazonaws.com/tease-thumbs_gfycat_comGraciousWiltedAmericanblackvulture-small.gif'
 
 # think [user] (reason)
 
@@ -356,7 +354,7 @@ url = 'https://thumbs.gfycat.com/GraciousWiltedAmericanblackvulture-small.gif'
 
 [[gif]]
 verb = 'thumbsup'
-url = 'https://thumbs.gfycat.com/FeistyWeakDuckbillplatypus-small.gif'
+url = 'https://sophie-emote-images.s3.amazonaws.com/thumbsup-thumbs_gfycat_comFeistyWeakDuckbillplatypus-small.gif'
 
 # tickle (user) (reason)
 
