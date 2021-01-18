@@ -68,6 +68,10 @@ url = 'https://sophie-emote-images.s3.amazonaws.com/die-thumbs_gfycat_comAmusedU
 verb = 'dance'
 url = 'https://sophie-emote-images.s3.amazonaws.com/dance-thumbs_gfycat_comCautiousTanGeese-small.gif'
 
+[[gif]]
+verb = 'dance'
+url = 'https://thumbs.gfycat.com/ActualLikelyArcticseal-small.gif'
+
 # die (user) (reason) - Wish yourself or someone else death. Virtually though, hopefully
 [[emote]]
 verb = 'die'
@@ -185,6 +189,10 @@ url = 'https://sophie-emote-images.s3.amazonaws.com/kiss-thumbs_gfycat_comGoodna
 verb = 'kiss'
 url = 'https://sophie-emote-images.s3.amazonaws.com/kiss-thumbs_gfycat_comNeedyCheeryAidi-small.gif'
 
+[[gif]]
+verb = 'kiss'
+url = 'https://thumbs.gfycat.com/BaggyKeenIcterinewarbler-small.gif'
+
 # laugh (user) (reason) - Laugh at whatever is going on
 
 # lick [user] (reason)
@@ -224,6 +232,7 @@ url = 'https://thumbs.gfycat.com/FluffyBothBlueshark-small.gif'
 [[gif]]
 verb = 'panic'
 url = 'https://thumbs.gfycat.com/EqualJealousHapuku-small.gif'
+
 # pat [user] (reason)
 
 # peck [user] (reason)
@@ -253,6 +262,10 @@ ReceiverDescription = '%[1]s has poked %[2]d people and has been poked by %[3]d 
 [[gif]]
 verb = 'poke'
 url = 'https://sophie-emote-images.s3.amazonaws.com/poke-thumbs_gfycat_comNeglectedDeliciousHorse-small.gif'
+
+[[gif]]
+verb = 'poke'
+url = 'https://thumbs.gfycat.com/IndolentFirstAmericanwirehair-small.gif'
 
 # pout (user) (reason)
 
