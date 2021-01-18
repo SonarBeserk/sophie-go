@@ -54,6 +54,9 @@ url = 'https://sophie-emote-images.s3.amazonaws.com/cheer-thumbs_gfycat_comAccep
 
 # cringe (user) (reason) - Cringe at whatever stuff is happening in chat
 
+[[gif]]
+verb = 'cringe'
+url = 'https://sophie-emote-images.s3.amazonaws.com/die-thumbs_gfycat_comAmusedUnevenBird-small.gif'
 # cry (user) (reason) - Cry, because it's okey to do so. I do so at 3am too...
 
 # cuddle [user] (reason) - Give someone a big cuddle, they deserve it!
@@ -75,7 +78,7 @@ ReceiverDescription = '%[1]s has been fed up %[2]d people and has %[3]d people h
 
 [[gif]]
 verb = 'die'
-url = 'https://sophie-emote-images.s3.amazonaws.com/die-thumbs_gfycat_comAmusedUnevenBird-small.gif'
+url = 'https://thumbs.gfycat.com/MistyThirdAmericanratsnake-small.gif'
 
 # facepalm (user) (reason) - Facepalm. Because people are dumb in chat
 [[gif]]
