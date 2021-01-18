@@ -214,6 +214,13 @@ ReceiverDescription = '%[1]s has asked for help from %[2]d people and has been c
 verb = 'panic'
 url = 'https://sophie-emote-images.s3.amazonaws.com/panic-thumbs_gfycat_comHardtofindCreepyAoudad-small.gif'
 
+[[gif]]
+verb = 'panic'
+url = 'https://thumbs.gfycat.com/FluffyBothBlueshark-small.gif'
+
+[[gif]]
+verb = 'panic'
+url = 'https://thumbs.gfycat.com/EqualJealousHapuku-small.gif'
 # pat [user] (reason)
 
 # peck [user] (reason)
