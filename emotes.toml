@@ -200,7 +200,7 @@ url = 'https://sophie-emote-images.s3.amazonaws.com/kiss-thumbs_gfycat_comNeedyC
 
 [[gif]]
 verb = 'nuzzle'
-url = 'https://thumbs.gfycat.com/AccomplishedNeglectedGrouse-small.gif'
+url = 'https://sophie-emote-images.s3.amazonaws.com/nuzzle-thumbs_gfycat_comAccomplishedNeglectedGrouse-small.gif'
 
 # panic [user] (reason)
 [[emote]]
@@ -212,7 +212,7 @@ ReceiverDescription = '%[1]s has asked for help from %[2]d people and has been c
 
 [[gif]]
 verb = 'panic'
-url = 'https://sophie-emote-images.s3.amazonaws.com/nuzzle-thumbs_gfycat_comAccomplishedNeglectedGrouse-small.gif'
+url = 'https://sophie-emote-images.s3.amazonaws.com/panic-thumbs_gfycat_comHardtofindCreepyAoudad-small.gif'
 
 # pat [user] (reason)
 
