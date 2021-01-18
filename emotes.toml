@@ -41,6 +41,13 @@ url = 'https://sophie-emote-images.s3.amazonaws.com/bite-thumbs_gfycat_comGracio
 # chase [user] (reason) - Chase someone who is running away
 
 # cheer (user) (reason) - Cheer for someone, yay!
+[[emote]]
+verb = 'cheer'
+SenderMessage = '**%[1]s** is **cheering** on %[2]s'
+SenderDescription = '%[1]s has cheered on %[2]d people and has been cheered on by %[3]d people'
+ReceiverMessage = '**%[1]s** is **cheering** on **%[2]s** %[3]s'
+ReceiverDescription = '%[1]s has cheering on %[2]d people and has been cheering on by %[3]d people'
+
 [[gif]]
 verb = 'cheer'
 url = 'https://sophie-emote-images.s3.amazonaws.com/cheer-thumbs_gfycat_comAcceptableTiredAmericanbobtail-small.gif'
@@ -233,7 +240,6 @@ SenderDescription = '%[1]s has poked %[2]d people and has been poked by %[3]d pe
 ReceiverMessage = '**%[1]s** is **poking** **%[2]s** %[3]s'
 ReceiverDescription = '%[1]s has poked %[2]d people and has been poked by %[3]d people'
 
-
 [[gif]]
 verb = 'poke'
 url = 'https://sophie-emote-images.s3.amazonaws.com/poke-thumbs_gfycat_comNeglectedDeliciousHorse-small.gif'
@@ -351,6 +357,12 @@ url = 'https://sophie-emote-images.s3.amazonaws.com/tease-thumbs_gfycat_comGraci
 # think [user] (reason)
 
 # thumbsup (user) (reason)
+[[emote]]
+verb = 'thumbsup'
+SenderMessage = '**%[1]s** **Approves** of %[2]s'
+SenderDescription = '%[1]s has approved of %[2]d times and has been approved of %[3]d times'
+ReceiverMessage = '**%[1]s** **Approves** of **%[2]s** %[3]s'
+ReceiverDescription = '%[1]s has approved of others %[2]d times and has been approved of %[3]d times'
 
 [[gif]]
 verb = 'thumbsup'
