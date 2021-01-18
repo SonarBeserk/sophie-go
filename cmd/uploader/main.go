@@ -67,22 +67,26 @@ func main() {
 			continue
 		}
 
-		fmt.Println("Uploading image " + image.URL)
-
 		fileName := image.Verb + "-" + image.URL
 		fileName = urlCleaner.Replace(fileName)
 		extIndex := strings.LastIndexAny(fileName, "_")
 		fileName = fileName[:extIndex] + "." + fileName[extIndex+1:]
 
+		if strings.Contains(fileName, bucketName) {
+			continue
+		}
+
+		fmt.Println("Uploading image: " + image.URL)
+
 		err = downloadFile(image.URL, imagesDirectory+"/"+fileName)
 		if err != nil {
-			fmt.Printf("failed to download file %q, %v", fileName, err)
+			fmt.Printf("Failed to download file: %q, %v", fileName, err)
 			return
 		}
 
 		f, err := os.Open(imagesDirectory + "/" + fileName)
 		if err != nil {
-			fmt.Printf("failed to open file %q, %v", fileName, err)
+			fmt.Printf("Failed to open file %q, %v", fileName, err)
 			return
 		}
 
@@ -94,11 +98,11 @@ func main() {
 			ACL:    aws.String("public-read"),
 		})
 		if err != nil {
-			fmt.Printf("failed to upload file, %v", err)
+			fmt.Printf("Failed to upload file, %v", err)
 			return
 		}
 
-		fmt.Printf("File uploaded to %s\n", result.Location)
+		fmt.Printf("File uploaded to: %s\n", result.Location)
 	}
 }
 
