@@ -43,7 +43,7 @@ url = 'https://sophie-emote-images.s3.amazonaws.com/bite-thumbs_gfycat_comGracio
 # cheer (user) (reason) - Cheer for someone, yay!
 [[emote]]
 verb = 'cheer'
-SenderMessage = '**%[1]s** is **cheering** on %[2]s'
+SenderMessage = '**%[1]s** is **cheering** %[2]s'
 SenderDescription = '%[1]s has cheered on %[2]d people and has been cheered on by %[3]d people'
 ReceiverMessage = '**%[1]s** is **cheering** on **%[2]s** %[3]s'
 ReceiverDescription = '%[1]s has cheering on %[2]d people and has been cheering on by %[3]d people'
@@ -359,8 +359,8 @@ url = 'https://sophie-emote-images.s3.amazonaws.com/tease-thumbs_gfycat_comGraci
 # thumbsup (user) (reason)
 [[emote]]
 verb = 'thumbsup'
-SenderMessage = '**%[1]s** **Approves** of %[2]s'
-SenderDescription = '%[1]s has approved of %[2]d times and has been approved of %[3]d times'
+SenderMessage = '**%[1]s** **Approves** %[2]s'
+SenderDescription = '%[1]s has approved %[2]d times and has been approved of %[3]d times'
 ReceiverMessage = '**%[1]s** **Approves** of **%[2]s** %[3]s'
 ReceiverDescription = '%[1]s has approved of others %[2]d times and has been approved of %[3]d times'
 
